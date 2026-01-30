@@ -17,7 +17,7 @@ TODO:
 - add speaker notes
 - trim for time?
 
-- runnable example for mandlebrot
+- runnable example for mandelbrot
 - IDE demo
 - wgsl-play demo
 - wgsl-studio demo
@@ -58,12 +58,13 @@ February 2026
 
 # Vision
 
-<div class="mt-6">
-Empower a new generation of shader developers
+<div class="mt-6 space-y-6">
 
-GPU programming integrated into modern development
+### Empower a new generation of shader developers
 
-Flourishing of GPU apps, big and small
+### Integrate GPU programming into modern development
+
+### Flourishing of GPU apps, big and small
 </div>
 
 
@@ -75,7 +76,7 @@ A vision for WebGPU, we think WESL can help.
 # Why Extend WGSL/WebGPU?
 
 
-### Pioneer new features cheaply
+### Pioneer new features with low risk
 
 <div class="mt-2 ml-4">
 Explore first 
@@ -107,6 +108,19 @@ Support community needs for tooling, and language features to support tooling
 
 ---
 
+# Support for WGSL/WebGPU
+
+<div class="mt-8 space-y-6">
+
+### WESL language features designed as potential WGSL features
+
+### Collaborate on language experiments
+
+### Support core WGSL/WebGPU development
+
+</div>
+---
+
 # WESL Language Aims
 
 
@@ -128,20 +142,6 @@ WebGPU Conformance Test Suite (CTS)
 <!--
 We want to help grow the ecosystem, not create a splinter language.
 -->
-
----
-
-# Support for WGSL/WebGPU
-
-<div class="mt-8 space-y-6">
-
-### WESL language features designed as potential WGSL features
-
-### Stay in sync on ideas
-
-### Support core WGSL/WebGPU development
-
-</div>
 ---
 
 # Power Features and Simple Users
@@ -158,31 +158,14 @@ Lots of part time shader programmers.
 So there's a premium on simplicity.
 
 Meanwhile we want to support useful libraries, and larger game engines,
-like Bevy.  So we have judiciously add power to the language.
+like Bevy.  So we judiciously add power to the language.
 
 Also, we're "blessed" with supporting multiple host languages. 
 We try to chart a neutral path and not match Rust or TypeScript
 or any other of our favorite languages.
 -->
 
----
-# TBD
-WebGPU community shader tools and extensions 
 
-### WESL Language Extensions
-- Modules
-- Conditions
-- Libraries
-- ...
-
-### Tool Support
-
-- WESL Transpiler, js bundler integration 
-- WGSL/WESL Language Server
-- WGSL/WESL Test Runner
-- doc tools
-- web components
-- ...
 ---
 
 # WESL Syntax
@@ -206,7 +189,7 @@ fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
 }
 ```
 ```wgsl
-import super::graphics::mandlebrot;
+import super::graphics::mandelbrot;
 
 @fragment
 fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
@@ -217,7 +200,7 @@ fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
 }
 ```
 ```wgsl
-import super::graphics::mandlebrot;
+import super::graphics::mandelbrot;
 import lygia::color::palette::spectral::zucconi::zucconi6;
 
 @fragment
@@ -230,7 +213,7 @@ fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
 ```
 
 ```wgsl
-import super::graphics::mandlebrot;
+import super::graphics::mandelbrot;
 import lygia::color::palette::spectral::zucconi::zucconi6;
 
 @fragment
@@ -247,37 +230,82 @@ fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
 ```
 
 ````
-
 ---
 
-# Transpilation Pipeline
+# Designing a Library Format for WebGPU
 
-```mermaid
-flowchart LR
-  A(WESL/WESL):::data
-  --> B{{Transpiler}}:::transform
-  --> C(WGSL):::data
-  --> D{{WebGPU}}:::transform
-  --> E(SPIR-V):::data
+<div class="mt-8 space-y-6">
 
-classDef transform fill:#dbe9f2,stroke:#333;
-classDef data fill:#e3d5e3, stroke:#333;
+### Text format for stability
+Human-readable, diffable, versionable
 
-```
+### npm/cargo mappings
+Don't reinvent package management
 
-<div class="mt-8">
-
-### Build Time
-CLI, build.rs, vite plugin
-
-### Runtime
-API, vite plugin, web components 
-
-### JS Bundler Integration
-Vite, Rollup, Webpack
+### Simple encoding = stable encoding
+Minimize complexity for long-term compatibility
 
 </div>
 
+<!--
+Zoom in on one issue that's been an ongoing interest: Libraries.
+
+Chose to embed within existing packaging systems, not build a WebGPU specific one.
+
+We've considered some compressed formats, but prefer text for stability.
+-->
+
+---
+
+# JS Library Embedding
+npm libraries are built by the package publisher
+
+```ts
+/// dist/weslBundle.js
+import lygia_math_mod289 from "lygia/math/mod289";
+
+export const weslBundle = {
+  name: "lygia",
+  edition: "2026_pre",
+  modules: {
+    "math/permute.wesl": `
+      import lygia::math::mod289::mod289;
+      fn permute(x: f32) -> f32 { return mod289(((x * 34.0) + 1.0) * x); }`
+  },
+  dependencies: [lygia_math_mod289],
+};
+
+export default weslBundle;
+```
+
+The js package format encodes shaders into JavaScript strings.
+
+The library publisher builds the bundle.
+---
+
+# Rust Library Embedding
+cargo packages are built by the package user
+
+```rs
+/// lib.rs
+use wesl::wesl_pkg;
+
+wesl_pkg!(random);
+```
+```rs
+/// build.rs
+fn main() {
+  wesl::PkgBuilder::new("random")
+    .scan_root("src/shaders").unwrap()
+    .build_artifact().unwrap();
+}
+```
+
+Rust packages contain shader sources plus build instructions.
+
+The wesl_pkg macro loads the sources into Rust strings. 
+
+The library user builds the bundle.
 
 ---
 
@@ -286,19 +314,14 @@ Vite, Rollup, Webpack
 ### Language Features
 Import, conditional compilation
 
-### Shader libraries for npm/cargo
+### Shader libraries for npm (JavaScript) and cargo (Rust)
 Libraries of shader functions
-
-### First Generation Tools
-wgsl-analyzer, wgsl-test, wgsl-play, wgsl-edit, wgsl-doc
 
 <!--
 Core feature set in our first release last year:
 - a robust module system
-- conditional complilation
+- conditional compilation
 - npm/cargo library support
-
-Recently, the focus has been on rounding out the tools.
 -->
 
 ---
@@ -306,7 +329,11 @@ Recently, the focus has been on rounding out the tools.
 # WESL Tomorrow
 
 ### Module System Enhancements
-Wildcards, visiblity control
+<div class="mt-4 ml-6">
+Wildcards
+
+Visibility control
+</div>
 
 ### Host / Shader Interface
 <div class="mt-4 ml-6">
@@ -316,13 +343,11 @@ Reflection
 
 </div>
 
-### Generics
+### Generics / Typeclasses
 <br/>
 
-### Tools Round 2: Polish and Extend
-
 <!--
-There are number of smaller language features under way.
+There are a number of smaller language features under way.
 
 Reflection and Generics enable a richer class of apps and libraries
 Parameterized modules -> injected constants as conditions
@@ -330,7 +355,6 @@ Parameterized modules -> injected constants as conditions
 
 More attention on the shader/host interface in general.
 -->
-
 ---
 
 # WESL - a shader front end
@@ -339,15 +363,18 @@ More attention on the shader/host interface in general.
 flowchart LR
 
   W(WESL<br>WGSL):::data --> T
-  H(.ts<br>.rs):::data
-  <--> T{{Transpiler}}:::transform
+  H(.ts<br>.rs):::data <--> T
 
-  T --> WGSL
+  T{{Transpiler}}:::transform
+
+  T --> C(WGSL):::data
+  --> D{{WebGPU}}:::transform
+  --> E(SPIR-V<br>MSL<br>HLSL):::data
 
   classDef transform fill:#dbe9f2,stroke:#333;
   classDef data fill:#e3d5e3, stroke:#333;
 ```
-<div class="mt-8 space-y-6">
+<div class="mt-2 space-y-6">
 
 ### language ergonomics (swizzles, generics)
 
@@ -363,6 +390,103 @@ but the underlying vulkan/metal/D3D12 APIs are inaccessible to us.
 
 So we can try generics in WESL, but not bindless.
 -->
+
+---
+
+# WebGPU Tooling
+
+```mermaid
+flowchart LR
+
+  W(WESL<br>WGSL):::data --> T
+  H(.ts<br>.rs):::data <--> T
+
+  subgraph tools ["<br>WebGPU Tooling"]
+   X{{"more tools"}}:::transform
+   T{{Transpiler}}:::transform
+  end
+
+  style tools fill:#b5cbd2,stroke:#999
+
+  T --> C(WGSL):::data
+  --> D{{WebGPU}}:::transform
+  --> E(SPIR-V<br>MSL<br>HLSL):::data
+
+  classDef transform fill:#dbe9f2,stroke:#333;
+  classDef data fill:#e3d5e3, stroke:#333;
+```
+<div class="mt-2 space-y-6">
+
+### 2025 - Linking and Packaging Tools
+### 2026 - More tools on the way
+
+</div>
+
+<!--
+Our goal has always been to enable WebGPU tools, 
+not just language enhancements.
+-->
+
+---
+
+# WebGPU Tooling
+For WESL and WGSL
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+
+<div class="border rounded-lg p-4 bg-gray-50">
+
+### Linking / Packaging
+<div class="ml-4 mt-2">
+
+wesl-plugin - vite/rollup/webpack 
+
+build.rs - rust integration
+
+wesl-cli - link or package from cli
+</div>
+</div>
+
+<div class="border rounded-lg p-4 bg-green-50">
+
+### Editor Support
+<div class="ml-4 mt-2">
+
+wgsl-analyzer - IDE Language Server
+
+wgsl-edit - web editor
+
+</div>
+
+</div>
+
+<div class="border rounded-lg p-4 bg-green-50">
+
+### Documentation Tools 
+<div class="ml-4 leading-8 mt-2">
+
+wesl-doc - HTML documentation generator
+
+wgsl-play - web samples
+
+</div>
+</div>
+
+
+<div class="border rounded-lg p-4 bg-green-50">
+
+### Test Tools
+<div class="leading-8">
+
+wgsl-test - native and vite/jest tests
+
+wgsl-studio - IDE test runner
+
+</div>
+
+</div>
+
+</div>
 
 ---
 layout: center
@@ -476,92 +600,14 @@ See shader output in real-time as you edit
 
 </div>
 
-
 ---
 
-# wesl-doc
-
-<div class="mt-8 space-y-6">
-
-### Documentation Generator
-Convert shader comments to HTML documentation
-
-### API Reference
-Auto-generated from source annotations
-
-</div>
-
----
-
-# Extensions enable ecosystem tools
-
-<div class="mt-4">
-
-_\+ imports + std config_ <v-click><span>→ cli link, vite plugins, language server</span></v-click>
-
-<v-click>
-
-<v-click>
-
-_\+ packaging format_ <v-click><span>→ npm/cargo libraries </span></v-click>
-</v-click>
-
-_\+ annotations + reflection_ <v-click><span>→ wgsl-test</span></v-click>
-
-</v-click>
-
-<v-click>
-
-_\+ libraries_ <v-click><span>→ wgsl-play, wgsl-edit</span></v-click>
-</v-click>
-
-<v-click>
-
-_\+ conditions + visibility + generics_ <v-click><span>→ richer libraries</span></v-click>
-</v-click>
-
-</div>
-
-<!--
-Pooling user requested extensions lets us make *shared tooling* to benefit many projects.
-
-And tools themselves create new needs from the shader language. 
-
-A virtuous cycle.
--->
-
----
-
-# Designing a Library Format for WebGPU
-
-<div class="mt-8 space-y-6">
-
-### Text format for stability
-Human-readable, diffable, versionable
-
-### npm/cargo mappings
-Don't reinvent package management
-
-### Simple encoding = stable encoding
-Minimize complexity for long-term compatibility
-
-</div>
-
-<!--
-Zoom in on one issue that's been an ongoing interest: Libraries.
-
-Chose to embed within existing packaging systems, not build a WebGPU specific one.
-
-We've considered some compressed formats, but prefer text for stability.
--->
-
----
 
 # WESL for other Shader Languages?
 
 <div>
 
-### Lowest common demoninator for WebGPU reuse:
+### Lowest common denominator for WebGPU reuse:
 <div class="mt-4 ml-6">
 WGSL + modules
 
@@ -572,7 +618,7 @@ basic conditional compilation
 <div class="mt-4 ml-6">
 npm/cargo packaging for libraries
 
-re-use tool ecosystem 
+reuse the tool ecosystem 
 </div>
 
 </div>
@@ -621,7 +667,7 @@ But we're aiming for WESL to be a support for WGSL and the WebGPU community.
 ---
 
 # Advice Welcome
-WESL is new
+WESL has a lot to learn
 
 We'd love to hear experiences from other shader communities.
 
@@ -629,7 +675,7 @@ We'd love to hear experiences from other shader communities.
 
 - wildcard imports
 - parameterized modules
-- visiblity between modules, between libraries, and shader -> host
+- visibility: modules, libraries, and shader-to-host
 - generics / typeclasses / context classes
 - reflection
 
@@ -658,3 +704,44 @@ layout: center
 ---
 
 # Extras
+
+---
+
+# Extensions enable ecosystem tools
+
+<div class="mt-4">
+
+_\+ imports + std config_ <v-click><span>→ cli link, vite plugins, language server</span></v-click>
+
+<v-click>
+
+<v-click>
+
+_\+ packaging format_ <v-click><span>→ npm/cargo libraries </span></v-click>
+</v-click>
+
+_\+ annotations + reflection_ <v-click><span>→ wgsl-test</span></v-click>
+
+</v-click>
+
+<v-click>
+
+_\+ libraries_ <v-click><span>→ wgsl-play, wgsl-edit</span></v-click>
+</v-click>
+
+<v-click>
+
+_\+ conditions + visibility + generics_ <v-click><span>→ richer libraries</span></v-click>
+</v-click>
+
+</div>
+
+<!--
+Pooling user requested extensions lets us make *shared tooling* to benefit many projects.
+
+And tools themselves create new needs from the shader language. 
+
+A virtuous cycle.
+-->
+
+---
