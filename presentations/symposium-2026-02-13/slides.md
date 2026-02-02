@@ -103,7 +103,12 @@ Shader library packaging formats
 </div>
 
 <!--
-Support community needs for tooling, and language features to support tooling
+We started with the motivation to support community needs for WebGPU tooling.
+- Language extension ideas for WebGPU's shader language soon followed. 
+
+Extending the language outside the browser core makes sense for two reasons:
+- it's easier to iterate: open source tools vs. multiple browsers.
+- some features may never need to go into the browser core.
 -->
 
 ---
@@ -119,6 +124,15 @@ Support community needs for tooling, and language features to support tooling
 ### Support core WGSL/WebGPU development
 
 </div>
+
+<!--
+We try to work closely with the WebGPU committee. 
+
+Our work is a support, not a substitute for WebGPU/WGSL.
+
+WESL extensions are designed to be possible future WGSL features.
+-->
+
 ---
 
 # WESL Language Aims
@@ -141,7 +155,12 @@ WebGPU Conformance Test Suite (CTS)
 
 <!--
 We want to help grow the ecosystem, not create a splinter language.
+
+We drive language design from use cases from community shaders.
+
+We maintain and test for strict upward compatibility with WGSL. Our tools run the same compatibility test suite as the browsers.
 -->
+
 ---
 
 # Power Features and Simple Users
@@ -153,9 +172,11 @@ We want to help grow the ecosystem, not create a splinter language.
 </div>
 
 <!--
-Expect that as WebGPU proliferates, there'll be a lot of small projects.
+A thought on how think about the design center for WebGPU/WGSL/WESL.
+
+We expect that as WebGPU proliferates, there'll be a lot of small projects.
 Lots of part time shader programmers. 
-So there's a premium on simplicity.
+So there's a premium on **simplicity**.
 
 Meanwhile we want to support useful libraries, and larger game engines,
 like Bevy.  So we judiciously add power to the language.
@@ -164,7 +185,6 @@ Also, we're "blessed" with supporting multiple host languages.
 We try to chart a neutral path and not match Rust or TypeScript
 or any other of our favorite languages.
 -->
-
 
 ---
 
@@ -230,6 +250,16 @@ fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
 ```
 
 ````
+
+<!--
+A peek at some of the extensions in WESL:
+
+- starts with WGSL
+- adds modules so people can split their shaders into separate files
+- adds packaged library support so people share the modules across organizations
+- adds conditionals so people can build or runtime customize
+-->
+
 ---
 
 # Designing a Library Format for WebGPU
@@ -281,10 +311,24 @@ export default weslBundle;
 The js package format encodes shaders into JavaScript strings.
 
 The library publisher builds the bundle.
+
+<!--
+The npm library bundle format looks like this:
+
+mostly, just the shader text:
+- plus a minimal set of metadata
+- like the relative path, for module linking
+- and dependencies to other bundles for inter-library references
+
+-->
+
 ---
 
 # Rust Library Embedding
 cargo packages are built by the package user
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+<div>
 
 ```rs
 /// lib.rs
@@ -292,6 +336,9 @@ use wesl::wesl_pkg;
 
 wesl_pkg!(random);
 ```
+</div>
+
+<div>
 ```rs
 /// build.rs
 fn main() {
@@ -301,11 +348,20 @@ fn main() {
 }
 ```
 
+</div>
+</div>
+
 Rust packages contain shader sources plus build instructions.
 
 The wesl_pkg macro loads the sources into Rust strings. 
 
 The library user builds the bundle.
+
+<!--
+the rust format is similar internally
+
+the rust build conventions are of course a bit different than JavaScript.
+-->
 
 ---
 
@@ -347,14 +403,14 @@ Reflection
 <br/>
 
 <!--
-There are a number of smaller language features under way.
-
-Reflection and Generics enable a richer class of apps and libraries
-Parameterized modules -> injected constants as conditions
-(note runtime linking)
+There are a number of language features under way. Wildcards, visibility.
 
 More attention on the shader/host interface in general.
+- Parameterized modules -> injected constants as conditions
+
+Medium term, Reflection and Generics should enable a richer class of apps and libraries
 -->
+
 ---
 
 # WESL - a shader front end
@@ -376,7 +432,7 @@ flowchart LR
 ```
 <div class="mt-2 space-y-6">
 
-### language ergonomics (swizzles, generics)
+### language ergonomics (modules, generics)
 
 ### shader/host code integration (reflection, injection)
 
@@ -385,7 +441,8 @@ flowchart LR
 <!--
 Of course, there are limits to what we can do with WESL.
 
-We can rewrite source code
+We can rewrite shader source code,
+
 but the underlying vulkan/metal/D3D12 APIs are inaccessible to us. 
 
 So we can try generics in WESL, but not bindless.
@@ -423,8 +480,12 @@ flowchart LR
 </div>
 
 <!--
-Our goal has always been to enable WebGPU tools, 
+As mentioned, our goal has always been to enable WebGPU tools, 
 not just language enhancements.
+
+We started with linking and packaging tools.
+
+More tools are coming.
 -->
 
 ---
@@ -488,6 +549,15 @@ wgsl-studio - IDE test runner
 
 </div>
 
+<!--
+These are some of the needs we hear about from the community. 
+
+Tools are underway for:
+- editor support
+- online documentation
+- testing
+-->
+
 ---
 layout: center
 ---
@@ -496,23 +566,69 @@ layout: center
 
 ---
 
-# wgsl-analyzer
+# Linking Shader Modules
 
-<div class="mt-8 space-y-6">
+<div class="grid grid-cols-2 gap-4 mt-8">
 
-### Language Server for WGSL/WESL
+<div>
 
-- Syntax highlighting
-- Error diagnostics
-- Go to definition
-- Autocomplete
-- Hover information
-- Formatter
+
+### TypeScript
+```ts
+import { link } from "wesl";
+import appWesl from "./shaders/app.wesl?link";
+
+const linked = await link(appWesl);
+
+linked.createShaderModule(device);
+
+```
+
+**vite** / **webpack** / **rollup** plugins
+
+
+</div>
+
+<div>
+
+
+### Rust
+```rs
+use wesl::Wesl;
+
+let wgsl_str = Wesl::new("src/shaders")
+    .compile("main.wesl")
+    .unwrap()
+    .to_string();
+```
+
+**build.rs** integration
+
+</div>
+
+</div>
+
+<div class="space-y-6 mt-12">
+
+### Transpile & link at build or runtime
+
+### Cli linking tools available
 
 </div>
 
 <!--
-TBD
+A peek at what linking looks like for an app.
+
+Our goal:
+
+- very few lines of code to add WESL to a WebGPU project
+
+- Meet developers where they are.
+Enhance the tools/workflow they already use.
+
+- so significant effort towards making e.g. JavaScript/TypeScript bundler plugins.
+
+cli tools are also available for linking too, for users with more custom build setups
 -->
 
 ---
@@ -551,7 +667,33 @@ Package shaders for community sharing
 </div>
 
 <!--
-Show building a library
+- Show running wgsl-packager from the cli
+- Show generated bundle
+- Show lygia on npm and crates.io
+
+[embed static screenshots and/or vcr]
+-->
+
+---
+
+# wgsl-play / wgsl-edit
+
+<div class="mt-8 space-y-6">
+
+### Interactive Code Samples
+Editable shader examples embedded in documentation
+
+### Live Preview
+See shader output in real-time as you edit
+
+</div>
+
+<!--
+mandelbrot in player
+
+mandelbrot, edit live
+
+[embed in slidehow]
 -->
 
 ---
@@ -586,22 +728,50 @@ VS Code extension for running tests, previewing images
 
 </div>
 
+<!--
+Goal: integrate with existing test frameworks and VSCode
+
+- Unit testing (something increasingly important in the AI era)
+
+- image snapshot testing
+
+[add image snapshots:
+- see src of unit and regression test
+- vitest terminal runs test
+- see image regression
+- see wgsl-studio test runner / failure
+- see wgsl-studio embedded player
+]
+-->
+
 ---
 
-# wgsl-play / wgsl-edit
+# wgsl-analyzer
 
 <div class="mt-8 space-y-6">
 
-### Interactive Code Samples
-Editable shader examples embedded in documentation
+### Language Server for WGSL/WESL
 
-### Live Preview
-See shader output in real-time as you edit
+- Syntax highlighting
+- Error diagnostics
+- Go to definition
+- Autocomplete
+- Hover information
+- Formatter
 
 </div>
 
+<!--
+TBD
+-->
+
+---
+layout: center
 ---
 
+# Closing Thoughts
+
+---
 
 # WESL for other Shader Languages?
 
@@ -628,6 +798,39 @@ As WebGPU grows in popularity, and
 especially if our tooling proves useful...
 
 It might be helpful to define a stable subset of WESL for other languages to target.
+
+We provide tooling for integration into  rust and typescript ecosystems, tests, runtime linking / configuration, etc.
+-->
+
+---
+
+# WESL for other Shader Languages?
+
+<div>
+
+### Lowest common denominator for WebGPU reuse:
+<div class="mt-4 ml-6">
+WGSL + modules
+
+basic conditional compilation
+</div>
+
+### Define stable subset of WESL as target format?
+<div class="mt-4 ml-6">
+npm/cargo packaging for libraries
+
+reuse the tool ecosystem 
+</div>
+
+</div>
+
+<!--
+As WebGPU grows in popularity, and 
+especially if our tooling proves useful...
+
+It might be helpful to define a stable subset of WESL for other languages to target. Arguably what you want is wgsl+modules and conditions.
+
+After all, if you want to target WebGPU, you'll likely face the same ecosystem tooling integration issues that led us down this path.
 -->
 
 ---
@@ -655,13 +858,9 @@ We'll see!
 </div>
 
 <!--
-Wrapping up...
-
 We think WESL and its tooling can be an ongoing help for the WebGPU community. 
 
 What role WESL will play is uncertain..
-
-But we're aiming for WESL to be a support for WGSL and the WebGPU community.
 -->
 
 ---
@@ -743,5 +942,3 @@ And tools themselves create new needs from the shader language.
 
 A virtuous cycle.
 -->
-
----
