@@ -276,113 +276,6 @@ adds conditionals so people can customize shaders at build or runtime
 
 ---
 
-# Designing a Library Format for WebGPU
-
-<div class="mt-8 space-y-6">
-
-### Text format for stability
-Human-readable, diffable, versionable
-
-### npm/cargo mappings
-Don't reinvent package management
-
-### Simple encoding = stable encoding
-Minimize complexity for long-term compatibility
-
-</div>
-
-<!--
-Zoom in on one issue that's been an ongoing interest for us: 
-
-Enabling Libraries for WebGPU
-
-The tools and extensions we've build are enough to now start a library ecosystem for WebGPU.
-
-Chose to embed within existing packaging systems, not build a WebGPU specific one.
-
-We've considered some compressed formats, but prefer text for stability.
--->
-
----
-
-# JS Library Embedding
-npm libraries are built by the package publisher
-
-```ts
-/// dist/weslBundle.js
-import lygia_math_mod289 from "lygia/math/mod289";
-
-export const weslBundle = {
-  name: "lygia",
-  edition: "2026_pre",
-  modules: {
-    "math/permute.wesl": `
-      import lygia::math::mod289::mod289;
-      fn permute(x: f32) -> f32 { return mod289(((x * 34.0) + 1.0) * x); }`
-  },
-  dependencies: [lygia_math_mod289],
-};
-
-export default weslBundle;
-```
-
-The js package format encodes shaders into JavaScript strings.
-
-The library publisher builds the bundle.
-
-<!--
-The npm library bundle format looks like this:
-
-mostly, just the shader text:
-- plus a minimal set of metadata
-- like the relative path, for module linking
-- and dependencies to other bundles for inter-library references
-
--->
-
----
-
-# Rust Library Embedding
-cargo packages are built by the package user
-
-<div class="grid grid-cols-2 gap-4 mt-4">
-<div>
-
-```rs
-/// lib.rs
-use wesl::wesl_pkg;
-
-wesl_pkg!(random);
-```
-</div>
-
-<div>
-```rs
-/// build.rs
-fn main() {
-  wesl::PkgBuilder::new("random")
-    .scan_root("src/shaders").unwrap()
-    .build_artifact().unwrap();
-}
-```
-
-</div>
-</div>
-
-Rust packages contain shader sources plus build instructions.
-
-The wesl_pkg macro loads the sources into Rust strings. 
-
-The library user builds the bundle.
-
-<!--
-the rust format is similar internally
-
-the rust build conventions are of course a bit different than JavaScript.
--->
-
----
-
 # WESL Today
 
 ### Language Features
@@ -469,6 +362,12 @@ but the underlying vulkan/metal/D3D12 APIs are inaccessible to us.
 
 So we can try generics in WESL, but not bindless.
 -->
+
+---
+layout: center
+---
+
+# Tools
 
 ---
 
@@ -579,12 +478,6 @@ Tools are underway for:
 - online documentation
 - testing
 -->
-
----
-layout: center
----
-
-# Demos
 
 ---
 
@@ -700,24 +593,109 @@ Package shaders for community sharing
 
 ---
 
-# wgsl-play / wgsl-edit
+# Designing a Library Format for WebGPU
 
 <div class="mt-8 space-y-6">
 
-### Interactive Code Samples
-Editable shader examples embedded in documentation
+### Text format for stability
+Human-readable, diffable, versionable
 
-### Live Preview
-See shader output in real-time as you edit
+### npm/cargo mappings
+Don't reinvent package management
+
+### Simple encoding = stable encoding
+Minimize complexity for long-term compatibility
 
 </div>
 
 <!--
-mandelbrot in player
+Zoom in on one issue that's been an ongoing interest for us: 
 
-mandelbrot, edit live
+Enabling Libraries for WebGPU
 
-[embed in slidehow]
+The tools and extensions we've build are enough to now start a library ecosystem for WebGPU.
+
+Chose to embed within existing packaging systems, not build a WebGPU specific one.
+
+We've considered some compressed formats, but prefer text for stability.
+-->
+
+---
+
+# JS Library Embedding
+npm libraries are built by the package publisher
+
+```ts
+/// dist/weslBundle.js
+import lygia_math_mod289 from "lygia/math/mod289";
+
+export const weslBundle = {
+  name: "lygia",
+  edition: "2026_pre",
+  modules: {
+    "math/permute.wesl": `
+      import lygia::math::mod289::mod289;
+      fn permute(x: f32) -> f32 { return mod289(((x * 34.0) + 1.0) * x); }`
+  },
+  dependencies: [lygia_math_mod289],
+};
+
+export default weslBundle;
+```
+
+The js package format encodes shaders into JavaScript strings.
+
+The library publisher builds the bundle.
+
+<!--
+The npm library bundle format looks like this:
+
+mostly, just the shader text:
+- plus a minimal set of metadata
+- like the relative path, for module linking
+- and dependencies to other bundles for inter-library references
+
+-->
+
+---
+
+# Rust Library Embedding
+cargo packages are built by the package user
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+<div>
+
+```rs
+/// lib.rs
+use wesl::wesl_pkg;
+
+wesl_pkg!(random);
+```
+</div>
+
+<div>
+```rs
+/// build.rs
+fn main() {
+  wesl::PkgBuilder::new("random")
+    .scan_root("src/shaders").unwrap()
+    .build_artifact().unwrap();
+}
+```
+
+</div>
+</div>
+
+Rust packages contain shader sources plus build instructions.
+
+The wesl_pkg macro loads the sources into Rust strings. 
+
+The library user builds the bundle.
+
+<!--
+the rust format is similar internally
+
+the rust build conventions are of course a bit different than JavaScript.
 -->
 
 ---
@@ -770,6 +748,29 @@ Goal: integrate with existing test frameworks and VSCode
 
 ---
 
+
+# wgsl-play / wgsl-edit
+
+<div class="mt-8 space-y-6">
+
+### Interactive Code Samples
+Editable shader examples embedded in documentation
+
+### Live Preview
+See shader output in real-time as you edit
+
+</div>
+
+<!--
+mandelbrot in player
+
+mandelbrot, edit live
+
+[embed in slidehow]
+-->
+
+---
+
 # wgsl-analyzer
 
 <div class="mt-8 space-y-6">
@@ -794,37 +795,6 @@ layout: center
 ---
 
 # Closing Thoughts
-
----
-
-# WESL for other Shader Languages?
-
-<div>
-
-### Lowest common denominator for WebGPU reuse:
-<div class="mt-4 ml-6">
-WGSL + modules
-
-basic conditional compilation
-</div>
-
-### Define stable subset of WESL as target format?
-<div class="mt-4 ml-6">
-npm/cargo packaging for libraries
-
-reuse the tool ecosystem 
-</div>
-
-</div>
-
-<!--
-As WebGPU grows in popularity, and 
-especially if our tooling proves useful...
-
-It might be helpful to define a stable subset of WESL for other languages to target.
-
-We provide tooling for integration into  rust and typescript ecosystems, tests, runtime linking / configuration, etc.
--->
 
 ---
 
