@@ -328,13 +328,12 @@ Medium term, Reflection and Generics should enable a richer class of apps and li
 
 ---
 
-# WESL - a shader front end
+# WESL - a Shader Front End
 
 ```mermaid
 flowchart LR
 
   W(WESL<br>WGSL):::data --> T
-  H(.ts<br>.rs):::data <--> T
 
   T{{Transpiler}}:::transform
 
@@ -356,6 +355,8 @@ flowchart LR
 <!--
 Of course, there are limits to what we can do with WESL.
 
+We a shader front end.
+
 We can rewrite shader source code,
 
 but the underlying vulkan/metal/D3D12 APIs are inaccessible to us. 
@@ -371,7 +372,7 @@ layout: center
 
 ---
 
-# WebGPU Tooling
+# WESL Enables WebGPU Tooling
 
 ```mermaid
 flowchart LR
@@ -396,7 +397,7 @@ flowchart LR
 <div class="mt-2 space-y-6">
 
 ### 2025 - Linking and Packaging Tools
-### 2026 - More tools on the way
+### 2026 - Testing, Documentation, IDE tools
 
 </div>
 
@@ -406,7 +407,7 @@ not just language enhancements.
 
 We started with linking and packaging tools.
 
-More tools are coming.
+More tools are coming. We'll show snapshots of those tools next.
 -->
 
 ---
@@ -474,9 +475,12 @@ wgsl-studio - IDE test runner
 These are some of the needs we hear about from the community. 
 
 Tools are underway for:
-- editor support
-- online documentation
-- testing
+
+Editor support
+
+Online documentation
+
+Testing
 -->
 
 ---
@@ -511,8 +515,8 @@ linked.createShaderModule(device);
 ```rs
 use wesl::Wesl;
 
-let wgsl_str = Wesl::new("src/shaders")
-    .compile("main.wesl")
+let wgsl_str = Wesl::new("shaders")
+    .compile("app.wesl")
     .unwrap()
     .to_string();
 ```
@@ -584,12 +588,16 @@ Package shaders for community sharing
 </div>
 
 <!--
-- Show running wgsl-packager from the cli
-- Show generated bundle
-- Show lygia on npm and crates.io
-
-[embed static screenshots and/or vcr]
+-
 -->
+
+---
+
+<img src="/lygia_npm.png" alt="Lygia npm pacakge" class="h-100" />
+
+---
+
+<img src="/lygia_cargo.png" alt="Lygia crate" class="h-100" />
 
 ---
 
