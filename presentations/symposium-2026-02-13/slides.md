@@ -408,7 +408,9 @@ not just language enhancements.
 
 We started with linking and packaging tools.
 
-More tools are coming. We'll show snapshots of those tools next.
+A lot more is coming on the tools front. 
+
+We'll show snapshots of those tools next.
 -->
 
 ---
@@ -475,13 +477,11 @@ wgsl-studio - IDE test runner
 <!--
 These are some of the needs we hear about from the community. 
 
-Tools are underway for:
-
 Editor support
 
 Online documentation
 
-Testing
+Testing support
 -->
 
 ---
@@ -585,6 +585,13 @@ style libraries fill:#b5cbd2,stroke:#999
 <div class="space-y-4">
 
 ### Creating a Library is Easy
+<div class="ml-8">
+
+`wgsl-packager` command for npm
+
+`wesl_pkg` macro for Rust.
+
+</div>
 
 ### 
 
@@ -592,7 +599,11 @@ style libraries fill:#b5cbd2,stroke:#999
 </div>
 
 <!--
-Our goal is to make it easy to create and
+Our goal is to make it easy to create shader libraries.
+
+The WebGPU community right now is full of copy-pasta
+
+
 -
 -->
 
