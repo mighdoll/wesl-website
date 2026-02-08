@@ -589,7 +589,7 @@ style libraries fill:#b5cbd2,stroke:#999
 
 `wgsl-packager` command for npm
 
-`wesl_pkg` macro for Rust.
+`wesl_pkg` macro for crates
 
 </div>
 
@@ -603,17 +603,27 @@ Our goal is to make it easy to create shader libraries.
 
 The WebGPU community right now is full of copy-pasta
 
+Packaging a shader or a collection of shaders is 
+- one cli command for npm
+- 3 lines of code for rust
 
--
 -->
 
 ---
 
 <img src="/lygia_npm.png" alt="Lygia npm pacakge" class="h-100" />
 
+<!--
+Shader libraries as
+-->
+
 ---
 
 <img src="/lygia_cargo.png" alt="Lygia crate" class="h-100" />
+
+<!--
+shader libraries as Rust crates
+-->
 
 ---
 
