@@ -31,7 +31,6 @@ TODO:
   - wildcard imports
   - @publish
   - more?
-
 -->
 
 # WESL
@@ -103,8 +102,13 @@ Shader library packaging formats
 </div>
 
 <!--
-We started with the motivation to support community needs for WebGPU tooling.
-- Language extension ideas for WebGPU's shader language soon followed. 
+We actually started down the path of adding writing shader languages extensions because we were trying to fill some community needs for WebGPU tooling.
+
+We discovered that we really wanted some language features to support tooling.
+
+That's where we started. 
+
+As we got going, we realized that
 
 Extending the language outside the browser core makes sense for two reasons:
 - it's easier to iterate: open source tools vs. multiple browsers.
@@ -128,9 +132,9 @@ Extending the language outside the browser core makes sense for two reasons:
 <!--
 We try to work closely with the WebGPU committee. 
 
-Our work is a support, not a substitute for WebGPU/WGSL.
-
 WESL extensions are designed to be possible future WGSL features.
+
+Our work is a support, not a substitute for WebGPU/WGSL.
 -->
 
 ---
@@ -154,11 +158,16 @@ WebGPU Conformance Test Suite (CTS)
 ### Support WebGPU Ecosystem
 
 <!--
+We drive language design from use cases from community shaders 
+- and of course from tool development.
+
 We want to help grow the ecosystem, not create a splinter language.
 
-We drive language design from use cases from community shaders.
-
 We maintain and test for strict upward compatibility with WGSL. Our tools run the same compatibility test suite as the browsers.
+
+WGSL is WESL. 
+
+All our tools support vanilla WGSL plus a sprinkling of extra features.
 -->
 
 ---
@@ -172,7 +181,7 @@ We maintain and test for strict upward compatibility with WGSL. Our tools run th
 </div>
 
 <!--
-A thought on how think about the design center for WebGPU/WGSL/WESL.
+A thought on how we think about the **design center** for WebGPU/WGSL/WESL.
 
 We expect that as WebGPU proliferates, there'll be a lot of small projects.
 Lots of part time shader programmers. 
@@ -182,8 +191,10 @@ Meanwhile we want to support useful libraries, and larger game engines,
 like Bevy.  So we judiciously add power to the language.
 
 Also, we're "blessed" with supporting multiple host languages. 
-We try to chart a neutral path and not match Rust or TypeScript
-or any other of our favorite languages.
+
+We try to chart a neutral path and not to match Rust or TypeScript or C++ 
+
+or any other of our favorite languages like ocaml or scala or LEAN.
 -->
 
 ---
@@ -254,10 +265,13 @@ fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
 <!--
 A peek at some of the extensions in WESL:
 
-- starts with WGSL
-- adds modules so people can split their shaders into separate files
-- adds packaged library support so people share the modules across organizations
-- adds conditionals so people can build or runtime customize
+starts with WGSL
+
+adds modules so people can split their shaders into separate files
+
+adds packaged library support so people share the modules across organizations
+
+adds conditionals so people can customize shaders at build or runtime
 -->
 
 ---
@@ -278,7 +292,11 @@ Minimize complexity for long-term compatibility
 </div>
 
 <!--
-Zoom in on one issue that's been an ongoing interest: Libraries.
+Zoom in on one issue that's been an ongoing interest for us: 
+
+Enabling Libraries for WebGPU
+
+The tools and extensions we've build are enough to now start a library ecosystem for WebGPU.
 
 Chose to embed within existing packaging systems, not build a WebGPU specific one.
 
@@ -375,9 +393,12 @@ Libraries of shader functions
 
 <!--
 Core feature set in our first release last year:
-- a robust module system
-- conditional compilation
-- npm/cargo library support
+
+robust module system
+
+conditional compilation
+
+npm/cargo library support
 -->
 
 ---
@@ -406,7 +427,8 @@ Reflection
 There are a number of language features under way. Wildcards, visibility.
 
 More attention on the shader/host interface in general.
-- Parameterized modules -> injected constants as conditions
+
+Parameterized modules -> injected constants as conditions
 
 Medium term, Reflection and Generics should enable a richer class of apps and libraries
 -->
@@ -629,6 +651,8 @@ Enhance the tools/workflow they already use.
 - so significant effort towards making e.g. JavaScript/TypeScript bundler plugins.
 
 cli tools are also available for linking too, for users with more custom build setups
+
+And a playground for people who want to view the WESL to WGSL transpilation.
 -->
 
 ---
