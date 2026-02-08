@@ -375,21 +375,22 @@ layout: center
 # WESL Enables WebGPU Tooling
 
 ```mermaid
+%%{init: {'flowchart': {'subGraphTitleMargin': {'top': 20}}}}%%
 flowchart LR
 
   W(WESL<br>WGSL):::data --> T
   H(.ts<br>.rs):::data <--> T
 
-  subgraph tools ["<br>WebGPU Tooling"]
+  subgraph tools ["**WebGPU Tooling**"]
    X{{"more tools"}}:::transform
    T{{Transpiler}}:::transform
   end
 
-  style tools fill:#b5cbd2,stroke:#999
-
   T --> C(WGSL):::data
   --> D{{WebGPU}}:::transform
   --> E(SPIR-V<br>MSL<br>HLSL):::data
+
+  style tools fill:#b5cbd2,stroke:#999
 
   classDef transform fill:#dbe9f2,stroke:#333;
   classDef data fill:#e3d5e3, stroke:#333;
@@ -559,6 +560,7 @@ And a playground for people who want to view the WESL to WGSL transpilation.
 <div class="mt-8">
 
 ```mermaid
+%%{init: {'flowchart': {'subGraphTitleMargin': {'top': 10, 'bottom': 5}}}}%%
 flowchart LR
 
 subgraph libraries ["Packaged Libraries"]
