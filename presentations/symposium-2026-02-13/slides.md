@@ -561,9 +561,14 @@ And a playground for people who want to view the WESL to WGSL transpilation.
 ```mermaid
 flowchart LR
 
+subgraph libraries ["Packaged Libraries"]
   A(WGSL,WESL):::data
-  --> B{{Packager}}:::process
-  --> C(npm/cargo):::data
+  B{{Packaging}}:::process
+  C(npm/cargo):::data
+end
+A --> B
+B --> C
+
   --> D{{Transpiler}}:::process
   --> E{{WebGPU}}:::process
   
@@ -571,23 +576,21 @@ flowchart LR
 
 classDef process fill:#dbe9f2,stroke:#333;
 classDef data fill:#e3d5e3, stroke:#333;
-
+style libraries fill:#b5cbd2,stroke:#999
 ```
 </div>
 
-### Creating a Library
-Package shaders for community sharing
+<div class="space-y-4">
+
+### Creating a Library is Easy
+
+### 
 
 ### Tools are Library Aware
-<div class="ml-4 mt-2">
-
-- WGSL/WESL Language Server
-- `wgsl-test`
-- `<wgsl-play>`
-
 </div>
 
 <!--
+Our goal is to make it easy to create and
 -
 -->
 
@@ -606,7 +609,11 @@ Package shaders for community sharing
 <div class="mt-8 space-y-6">
 
 ### Text format for stability
+<div class="ml-8">
 Human-readable, diffable, versionable
+
+Optimize size/speed when the library is used
+</div>
 
 ### npm/cargo mappings
 Don't reinvent package management
@@ -621,11 +628,15 @@ Zoom in on one issue that's been an ongoing interest for us:
 
 Enabling Libraries for WebGPU
 
-The tools and extensions we've build are enough to now start a library ecosystem for WebGPU.
+The tools and extensions we've built are now enough to start a library ecosystem for WebGPU.
+
+Considered some compressed formats, but prefer text for stability.
+
+Prefer to apply those optimizations in apps. 
+- Envision applying minification, or AST precompilation, per app, not baking into the library format.
 
 Chose to embed within existing packaging systems, not build a WebGPU specific one.
 
-We've considered some compressed formats, but prefer text for stability.
 -->
 
 ---
@@ -662,7 +673,6 @@ mostly, just the shader text:
 - plus a minimal set of metadata
 - like the relative path, for module linking
 - and dependencies to other bundles for inter-library references
-
 -->
 
 ---
@@ -694,16 +704,17 @@ fn main() {
 </div>
 </div>
 
-Rust packages contain shader sources plus build instructions.
+Rust shader libraries contain shader sources plus build instructions.
 
-The wesl_pkg macro loads the sources into Rust strings. 
+The `wesl_pkg` macro loads the sources into Rust strings. 
 
 The library user builds the bundle.
 
 <!--
-the rust format is similar internally
+The rust format is similar internally to the npm one,
+shaders are packaged as rust string.
 
-the rust build conventions are of course a bit different than JavaScript.
+Rust conventions let us construct the embedding as the developer *uses* the library.
 -->
 
 ---
