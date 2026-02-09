@@ -979,12 +979,21 @@ See shader output in real-time as you edit
 
 <div class="grid grid-cols-2 gap-4 mt-4">
 
-<div class="space-y-6">
+<div class="space-y-4">
 
 ```html
 /// index.html
 <wgsl-play id="player"></wgsl-play>
 ```
+
+<div class="mt-4">
+
+### Shader inline in HTML
+
+</div>
+
+<v-click>
+
 <div>
 
 ```ts
@@ -993,6 +1002,7 @@ import shader from "./draw_shapes.wesl?link"
 
 document.querySelector("#player").project = shader
 ```
+
 </div>
 
 <div>
@@ -1003,16 +1013,16 @@ import lygia::space::rotate;
 import lygia::sdf::gearSDF;
 ...
 ```
-</div>
-
-<div class="mt-8 space-y-2">
-
-### Shader inline in HTML
-or
-
-### Shaders in separate files 
 
 </div>
+
+<div class="mt-4 space-y-2">
+
+### Shaders in separate files
+
+</div>
+
+</v-click>
 
 </div>
 
