@@ -6,14 +6,14 @@ import gradientSrc from "./gradient.wesl?raw"
 
 export const mandelbrotProject = {
   weslSrc: {
-    "package::main": mandelbrotSrc,
-    "package::graphics": graphicsSrc,
+    "main.wesl": mandelbrotSrc,
+    "graphics.wesl": graphicsSrc,
   },
 }
 
 export const gradientProject = {
   weslSrc: {
-    "package::main": gradientSrc,
+    "main.wesl": gradientSrc,
   },
 }
 
@@ -28,9 +28,7 @@ export function initPlayer(id: string, project: Record<string, unknown>) {
   const el = document.getElementById(id)
   if (!el) return
   trapKeys(el)
-  const trySet = () => { (el as any).project = project }
-  el.addEventListener("ready", trySet, { once: true })
-  trySet()
+  ;(el as any).project = project
 }
 
 export function initEditor(id: string, project: Record<string, unknown>) {

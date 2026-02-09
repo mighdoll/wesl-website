@@ -9,7 +9,7 @@
   "dependencies": {
     "@slidev/cli": "^0.50.0",
     "@slidev/theme-default": "latest",
-    "wgsl-edit": "^0.0.2",
-    "wgsl-play": "^0.0.19"
+    "wgsl-edit": "link:/Users/lee/wesl/worktrees/wgsl-edit-tweaks/tools/packages/wgsl-edit",
+    "wgsl-play": "link:/Users/lee/wesl/worktrees/wgsl-edit-tweaks/tools/packages/wgsl-play"
   }
 }
