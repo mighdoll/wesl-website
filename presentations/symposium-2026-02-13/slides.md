@@ -832,6 +832,47 @@ Goal: integrate with existing test frameworks and VSCode
 
 ---
 
+# Unit tests with `wgsl-test` 
+
+```wgsl
+/// interp_test.wesl
+import package::interp::smootherstep; // source fn to test
+import wgsl_test::expectNear;         // expectations 
+
+@test  // tag each test fn
+fn smootherstepQuarter() {
+  expectNear(smootherstep(0.0, 1.0, 0.25), 0.103516);
+}
+```
+
+Test shader functions with shader functions
+
+Validate with shader functions.
+
+Or return result and validate in host code. 
+
+[wgsl-test](https://github.com/wgsl-tooling-wg/wesl-js/tree/main/tools/packages/wgsl-test)
+
+---
+
+# Image tests with `wgsl-test` 
+
+```ts
+```
+
+---
+
+# Integrate with vitest 
+or any js test framework. or run standalone
+
+```ts
+```
+
+Standalone runner option for shader native tests
+
+
+---
+
 
 # wgsl-play / wgsl-edit
 
