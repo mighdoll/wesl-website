@@ -933,6 +933,16 @@ This is an example of how tool needs can drive the design for language extension
 
 <img src="/wgsl_studio_preview.png" alt="vscode wgsl-studio preview shaders" class="h-100" />
 
+<!--
+Image Snapshot tests are visible in wgsl-studio. 
+
+These are rendered live with the gpu.
+
+We're aiming for a convergence between the test api and preview api.
+
+Adding annotations to shaders for test setup is pretty similar to adding annotations for shader previews.
+-->
+
 ---
 layout: center
 ---
@@ -947,7 +957,6 @@ Web developers can embed a player.
 
 -->
 ---
-
 
 # wgsl-play / wgsl-edit
 
