@@ -706,8 +706,6 @@ export const weslBundle = {
   },
   dependencies: [],       // js handles dependencies & versions
 };
-
-export default weslBundle;
 ```
 
 Shaders are packaged as JavaScript strings.
