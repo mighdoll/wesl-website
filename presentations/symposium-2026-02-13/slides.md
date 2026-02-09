@@ -975,23 +975,42 @@ See shader output in real-time as you edit
 
 ---
 
-# wgsl-play
+# `<wgsl-play>`: HTML Viewer 
 
 <div class="grid grid-cols-2 gap-4 mt-4">
 
-<div>
+<div class="space-y-6">
 
 ```html
+/// index.html
 <wgsl-play id="player"></wgsl-play>
 ```
-
-<div class="mt-6">
+<div>
 
 ```ts
-import shader from "./draw-test.wesl?link"
+/// app.ts
+import shader from "./draw_shapes.wesl?link"
 
 document.querySelector("#player").project = shader
 ```
+</div>
+
+<div>
+
+```rs
+/// draw_shapes.wesl
+import lygia::space::rotate;
+import lygia::sdf::gearSDF;
+...
+```
+</div>
+
+<div class="mt-8 space-y-2">
+
+### Shader inline in HTML
+or
+
+### Shaders in separate files 
 
 </div>
 
@@ -1012,7 +1031,18 @@ onMounted(() => initPlayer("demo-player", drawShapesProject))
 </script>
 
 <!--
-lygia draw-shapes demo
+wgsl-play is a convenient way to put simple shaders on a web page
+
+you can put the shdaer code inline in the html
+
+or keep it in a separate file.
+
+in this example we're using the wesl-plugin's ?link
+
+That automatically loads all the dependencies from draw-shapes.wesl
+
+It's handy to have language extension for modules that's aware of libraries!
+
 -->
 
 ---
