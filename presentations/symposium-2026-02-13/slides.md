@@ -977,7 +977,33 @@ See shader output in real-time as you edit
 
 # wgsl-play
 
-<wgsl-play id="demo-player" style="width: 480px; height: 480px; display: block; margin: 1rem auto;"></wgsl-play>
+<div class="grid grid-cols-2 gap-4 mt-4">
+
+<div>
+
+```html
+<wgsl-play id="player"></wgsl-play>
+```
+
+<div class="mt-6">
+
+```ts
+import shader from "./draw-test.wesl?link"
+
+document.querySelector("#player").project = shader
+```
+
+</div>
+
+</div>
+
+<div>
+
+<wgsl-play id="demo-player" style="width: 400px; height: 400px; display: block;"></wgsl-play>
+
+</div>
+
+</div>
 
 <script setup>
 import { onMounted } from "vue"
@@ -986,7 +1012,7 @@ onMounted(() => initPlayer("demo-player", drawShapesProject))
 </script>
 
 <!--
-change to use lygia draw-shapes
+lygia draw-shapes demo
 -->
 
 ---
