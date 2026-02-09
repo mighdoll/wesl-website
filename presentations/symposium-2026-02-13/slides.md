@@ -849,7 +849,7 @@ Test shader functions with shader functions
 
 Validate with shader functions.
 
-Or return result and validate in host code. 
+Or return result and validate in any test library. 
 
 <div class="absolute bottom-0">
 
