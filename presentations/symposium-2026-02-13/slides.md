@@ -485,6 +485,12 @@ Testing support
 -->
 
 ---
+layout: center
+---
+
+# Linking and Packaging
+
+---
 
 # Linking Shader Modules
 
@@ -551,6 +557,8 @@ Enhance the tools/workflow they already use.
 cli tools are also available for linking too, for users with more custom build setups
 
 And a playground for people who want to view the WESL to WGSL transpilation.
+
+.. Not just app shaders
 -->
 
 ---
@@ -605,8 +613,7 @@ The WebGPU community right now is full of copy-pasta
 
 Packaging a shader or a collection of shaders is 
 - one cli command for npm
-- 3 lines of code for rust
-
+- one line of code for rust
 -->
 
 ---
@@ -614,8 +621,16 @@ Packaging a shader or a collection of shaders is
 <img src="/lygia_npm.png" alt="Lygia npm pacakge" class="h-100" />
 
 <!--
-Shader libraries as
+Shader libraries as npm packages
 -->
+
+<div class="mt-4 space-y-2">
+
+#### Usage
+
+`npm add lygia`
+
+</div>
 
 ---
 
@@ -623,7 +638,16 @@ Shader libraries as
 
 <!--
 shader libraries as Rust crates
+
+same sources, published two ways.
 -->
+
+<div class="mt-4 space-y-2">
+
+#### Usage
+
+`cargo add lygia`
+</div>
 
 ---
 
@@ -665,46 +689,55 @@ Chose to embed within existing packaging systems, not build a WebGPU specific on
 ---
 
 # JS Library Embedding
-npm libraries are built by the package publisher
 
 ```ts
 /// dist/weslBundle.js
-import lygia_math_mod289 from "lygia/math/mod289";
-
 export const weslBundle = {
-  name: "lygia",
+  name: "lygia",          // basic metadata
   edition: "2026_pre",
   modules: {
-    "math/permute.wesl": `
-      import lygia::math::mod289::mod289;
-      fn permute(x: f32) -> f32 { return mod289(((x * 34.0) + 1.0) * x); }`
+    "math/permute.wesl":  // relative paths to support shader linking
+
+        // shader source text
+    ` import lygia::math::mod289; 
+      fn permute(x: f32) -> f32 { 
+        return mod289(((x * 34.0) + 1.0) * x); 
+      }`
   },
-  dependencies: [lygia_math_mod289],
+  dependencies: [],       // js handles dependencies & versions
 };
 
 export default weslBundle;
 ```
 
-The js package format encodes shaders into JavaScript strings.
+Shaders are packaged as JavaScript strings.
 
 The library publisher builds the bundle.
 
+Tools read packages automatically (vite, webpack, cli, test).
+
 <!--
-The npm library bundle format looks like this:
+The npm library bundle format is automatically generated.
+
+It looks like roughly like this on the inside:
 
 mostly, just the shader text:
-- plus a minimal set of metadata
-- like the relative path, for module linking
-- and dependencies to other bundles for inter-library references
+
+plus a minimal set of metadata
+
+like the relative path, for module linking
+
+and dependencies to other bundles for inter-library references
 -->
 
 ---
 
 # Rust Library Embedding
-cargo packages are built by the package user
 
 <div class="grid grid-cols-2 gap-4 mt-4">
 <div>
+
+#### Publisher 
 
 ```rs
 /// lib.rs
@@ -715,6 +748,9 @@ wesl_pkg!(random);
 </div>
 
 <div>
+
+#### Library Consumer
+
 ```rs
 /// build.rs
 fn main() {
@@ -727,7 +763,7 @@ fn main() {
 </div>
 </div>
 
-Rust shader libraries contain shader sources plus build instructions.
+Rust shader libraries are packaged as shader source files plus a macro call.
 
 The `wesl_pkg` macro loads the sources into Rust strings. 
 
@@ -735,10 +771,16 @@ The library user builds the bundle.
 
 <!--
 The rust format is similar internally to the npm one,
-shaders are packaged as rust string.
+shaders are packaged as rust strings.
 
 Rust conventions let us construct the embedding as the developer *uses* the library.
 -->
+
+---
+layout: center
+---
+
+# Testing
 
 ---
 
