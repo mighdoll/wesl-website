@@ -33,6 +33,12 @@ importers:
       '@slidev/theme-default':
         specifier: latest
         version: 0.25.0
+      lygia:
+        specifier: latest
+        version: 1.4.1
+      wesl-plugin:
+        specifier: latest
+        version: 0.6.64(@nuxt/kit@3.21.0)(esbuild@0.25.12)(vite@6.4.1(@types/node@18.19.130)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.1))
       wgsl-edit:
         specifier: ^0.0.3
         version: 0.0.3
@@ -2951,6 +2957,9 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
+  lygia@1.4.1:
+    resolution: {integrity: sha512-wMOioKBk4vr7Pt+x85J7TImaNFuB9ZfqDp5pIYuzbaiKjdfsvqiM67vC+ngXEYf4hxqWcgTUM4Sx6bn0se9R7w==}
+
   lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
@@ -4181,6 +4190,32 @@ packages:
 
   wesl-gpu@0.1.18:
     resolution: {integrity: sha512-/2Quh59XRYX3oEQXuWhsshyaPm+EAbbRtu3nNxObPUNUO+sw6kq/UtEKtvASIWCQ5u9je5oso6dK11KOFDNhlA==}
+
+  wesl-plugin@0.6.64:
+    resolution: {integrity: sha512-FJedzxaGCAvlPGOfJufYOjIKL9jpJBApTlxSJuG0mnfFRSLCb4t5hhKP0Swa9rhj6v8D2NDicByZhXbCJU9xpA==}
+    peerDependencies:
+      '@farmfe/core': '>=1'
+      '@nuxt/kit': ^3
+      '@nuxt/schema': ^3
+      esbuild: '*'
+      rollup: ^3
+      vite: '>=3'
+      webpack: ^4 || ^5
+    peerDependenciesMeta:
+      '@farmfe/core':
+        optional: true
+      '@nuxt/kit':
+        optional: true
+      '@nuxt/schema':
+        optional: true
+      esbuild:
+        optional: true
+      rollup:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
 
   wesl@0.7.15:
     resolution: {integrity: sha512-oLMh75X9DvXVVoADr7PAlYDDfAAbSzfmVGsnXWvOb3gGGnQh+D0XnKyK26M/jGCRyz/9mLPS7Y+qPRq1wkHBjQ==}
@@ -7626,6 +7661,8 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
+  lygia@1.4.1: {}
+
   lz-string@1.5.0: {}
 
   magic-string-stack@0.1.2:
@@ -9184,6 +9221,17 @@ snapshots:
     dependencies:
       thimbleberry: 0.2.10
       wesl: 0.7.15
+    transitivePeerDependencies:
+      - random_wgsl
+
+  wesl-plugin@0.6.64(@nuxt/kit@3.21.0)(esbuild@0.25.12)(vite@6.4.1(@types/node@18.19.130)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.1)):
+    dependencies:
+      unplugin: 2.3.11
+      wesl: 0.7.15
+    optionalDependencies:
+      '@nuxt/kit': 3.21.0
+      esbuild: 0.25.12
+      vite: 6.4.1(@types/node@18.19.130)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.1)
     transitivePeerDependencies:
       - random_wgsl
 

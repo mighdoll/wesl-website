@@ -1,8 +1,12 @@
+/// <reference types="wesl-plugin/suffixes" />
 import "wgsl-edit";
 import "wgsl-play";
+import drawShapesConfig from "./draw-shapes.wesl?link";
 import gradientSrc from "./gradient.wesl?raw";
 import graphicsSrc from "./graphics.wesl?raw";
 import mandelbrotSrc from "./mandelbrot.wesl?raw";
+
+export const drawShapesProject = drawShapesConfig;
 
 export const mandelbrotProject = {
   weslSrc: {

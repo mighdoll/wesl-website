@@ -981,8 +981,8 @@ See shader output in real-time as you edit
 
 <script setup>
 import { onMounted } from "vue"
-import { initPlayer, mandelbrotProject } from "./wgsl-demos"
-onMounted(() => initPlayer("demo-player", mandelbrotProject))
+import { initPlayer, drawShapesProject } from "./wgsl-demos"
+onMounted(() => initPlayer("demo-player", drawShapesProject))
 </script>
 
 <!--

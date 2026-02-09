@@ -9,6 +9,8 @@
   "dependencies": {
     "@slidev/cli": "^0.50.0",
     "@slidev/theme-default": "latest",
+    "lygia": "latest",
+    "wesl-plugin": "latest",
     "wgsl-edit": "^0.0.3",
     "wgsl-play": "^0.0.20"
   }
