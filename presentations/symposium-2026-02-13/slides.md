@@ -9,6 +9,7 @@ drawings:
   persist: false
 transition: none
 ---
+
 <!--
 TODO:
 - add urls for wgsl-test, wgsl-studio, wgsl-analyzer, 
@@ -922,20 +923,56 @@ mandelbrot, edit live
 
 ---
 
+# wgsl-play
+
+<wgsl-play id="demo-player" style="width: 480px; height: 480px; display: block; margin: 1rem auto;"></wgsl-play>
+
+<script setup>
+import { onMounted } from "vue"
+import { initPlayer, mandelbrotSrc } from "./wgsl-demos"
+onMounted(() => initPlayer("demo-player", mandelbrotSrc))
+</script>
+
 <!--
-mandelbrot in editor 
+mandelbrot in player
 -->
 
 ---
 
+# wgsl-edit
+
+<wgsl-edit id="demo-editor" style="width: 90%; height: 400px; display: block; margin: 1rem auto;" theme="light"></wgsl-edit>
+
+<script setup>
+import { onMounted } from "vue"
+import { initEditor, mandelbrotSrc } from "./wgsl-demos"
+onMounted(() => initEditor("demo-editor", mandelbrotSrc))
+</script>
+
 <!--
-mandelbrot in player 
+mandelbrot in editor
 -->
 
 ---
 
+# wgsl-edit + wgsl-play
+
+<div style="display: flex; gap: 1rem; height: 420px; margin-top: 1rem;">
+  <wgsl-edit id="combo-editor" style="flex: 1; display: block;" theme="light"></wgsl-edit>
+  <wgsl-play id="combo-player" style="width: 400px; display: block;"></wgsl-play>
+</div>
+
+<script setup>
+import { onMounted } from "vue"
+import { initEditor, gradientSrc, connectPlayerToEditor } from "./wgsl-demos"
+onMounted(() => {
+  initEditor("combo-editor", gradientSrc)
+  connectPlayerToEditor("combo-player", "combo-editor")
+})
+</script>
+
 <!--
-mandelbrot in player and editor
+editor and player linked: edit code, see live output
 -->
 
 ---
@@ -1074,28 +1111,11 @@ layout: center
 
 <div class="mt-4">
 
-_\+ imports + std config_ <v-click><span>→ cli link, vite plugins, language server</span></v-click>
-
-<v-click>
-
-<v-click>
-
-_\+ packaging format_ <v-click><span>→ npm/cargo libraries </span></v-click>
-</v-click>
-
-_\+ annotations + reflection_ <v-click><span>→ wgsl-test</span></v-click>
-
-</v-click>
-
-<v-click>
-
-_\+ libraries_ <v-click><span>→ wgsl-play, wgsl-edit</span></v-click>
-</v-click>
-
-<v-click>
-
-_\+ conditions + visibility + generics_ <v-click><span>→ richer libraries</span></v-click>
-</v-click>
+<p><em>+ imports + std config</em> <v-click><span>→ cli link, vite plugins, language server</span></v-click></p>
+<v-click><p><em>+ packaging format</em> <v-click><span>→ npm/cargo libraries </span></v-click></p></v-click>
+<v-click><p><em>+ annotations + reflection</em> <v-click><span>→ wgsl-test</span></v-click></p></v-click>
+<v-click><p><em>+ libraries</em> <v-click><span>→ wgsl-play, wgsl-edit</span></v-click></p></v-click>
+<v-click><p><em>+ conditions + visibility + generics</em> <v-click><span>→ richer libraries</span></v-click></p></v-click>
 
 </div>
 
