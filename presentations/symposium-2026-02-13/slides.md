@@ -848,7 +848,7 @@ Test shader functions with shader functions
 
 Validate with shader functions.
 
-Or return result and validate in any test library. 
+Or return a result and validate in any test library. 
 
 <div class="absolute bottom-0">
 
@@ -869,21 +869,32 @@ Add more shader validators over time
 
 ---
 
-# Image tests with `wgsl-test` 
+# Integrate with vitest 
+or jest or mocha if you prefer
 
 ```ts
+import { testCompute } from "wgsl-test";
+
+const src = `
+  import package::hash::lowbias32;
+
+  @compute @workgroup_size(1)
+  fn main() {
+    test::results[0] = lowbias32(0u);
+    test::results[1] = lowbias32(42u);
+  }
+`;
+
+const result = await testCompute({ device, src });
 ```
+
+Tests run in Node (Dawn) or Deno (wgpu)
 
 ---
 
-# Integrate with vitest 
-or any js test framework. or run standalone
+# Image tests with `wgsl-test` 
 
-```ts
-```
-
-Standalone runner option for shader native tests
-
+<img src="/image_snapshot_fail.png" alt="image snapshot failure example" class="h-100" />
 
 ---
 layout: center
