@@ -1043,7 +1043,7 @@ onMounted(() => initPlayer("demo-player", drawShapesProject))
 <!--
 wgsl-play is a convenient way to put simple shaders on a web page
 
-you can put the shdaer code inline in the html
+you can put the shader code inline in the html
 
 or keep it in a separate file.
 
@@ -1052,7 +1052,6 @@ in this example we're using the wesl-plugin's ?link
 That automatically loads all the dependencies from draw-shapes.wesl
 
 It's handy to have language extension for modules that's aware of libraries!
-
 -->
 
 ---
