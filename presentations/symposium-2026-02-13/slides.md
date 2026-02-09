@@ -994,7 +994,7 @@ See shader output in real-time as you edit
 
 <v-click>
 
-<div>
+<div style="margin-top: 2rem;">
 
 ```ts
 /// app.ts
