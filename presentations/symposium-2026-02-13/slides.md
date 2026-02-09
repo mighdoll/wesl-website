@@ -887,6 +887,19 @@ Standalone runner option for shader native tests
 
 
 ---
+layout: center
+---
+
+# Web Site Tools
+
+<!-- 
+Library developers can show editable sample code 
+with live error checking.
+
+Web developers can embed a player. 
+
+-->
+---
 
 
 # wgsl-play / wgsl-edit
