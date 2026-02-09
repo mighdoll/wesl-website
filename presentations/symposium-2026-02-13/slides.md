@@ -14,16 +14,13 @@ transition: none
 TODO:
 - add urls for wgsl-test, wgsl-studio, wgsl-analyzer, 
 - add url to presentation
-- much review/revise
-- add speaker notes
-- trim for time?
 
 - runnable example for mandelbrot
 - IDE demo
 - wgsl-play demo
 - wgsl-studio demo
-- library demo with js and rust
-- try jannik's doc generator. 
+
+- jannik's doc generator. 
 - static screen shots as demo placeholders
 
 - extra slides for upcoming wgsl features 
@@ -831,7 +828,7 @@ Goal: integrate with existing test frameworks and VSCode
 
 ---
 
-# Unit tests with `wgsl-test` 
+# Unit Tests with `wgsl-test` 
 
 ```wgsl
 /// interp_test.wesl
@@ -849,6 +846,8 @@ Test shader functions with shader functions
 Validate with shader functions.
 
 Or return a result and validate in any test library. 
+
+Run tests with wgsl-test cli runner.
 
 <div class="absolute bottom-0">
 
@@ -869,7 +868,7 @@ Add more shader validators over time
 
 ---
 
-# Integrate with vitest 
+# Integrate with Vitest 
 or jest or mocha if you prefer
 
 ```ts
@@ -892,9 +891,19 @@ Tests run in Node (Dawn) or Deno (wgpu)
 
 ---
 
-# Image tests with `wgsl-test` 
+# Image Snapshot Tests with `wgsl-test` 
 
 <img src="/image_snapshot_fail.png" alt="image snapshot failure example" class="h-100" />
+
+---
+
+# wgsl-studio: VSCode Tests
+
+---
+
+# wgsl-studio: VSCode Shader Previews
+
+<img src="/wgsl_studio_preview.png" alt="vscode wgsl-studio preview shaders" class="h-100" />
 
 ---
 layout: center
