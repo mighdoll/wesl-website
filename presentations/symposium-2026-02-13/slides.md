@@ -536,7 +536,7 @@ let wgsl_str = Wesl::new("shaders")
 
 ### Transpile & link at build or runtime
 
-### Cli linking tools available
+### CLI linkers also available
 
 </div>
 
@@ -828,7 +828,7 @@ Goal: integrate with existing test frameworks and VSCode
 
 ---
 
-# Unit Tests with `wgsl-test` 
+# `wgsl-test`: Unit Tests
 
 ```wgsl
 /// interp_test.wesl
@@ -843,11 +843,12 @@ fn smootherstepQuarter() {
 
 Test shader functions with shader functions
 
-Validate with shader functions.
+Validate with shader functions
 
-Or return a result and validate in any test library. 
+Run tests with wgsl-test cli runner
 
-Run tests with wgsl-test cli runner.
+Tests run in Node (Dawn) or Deno (wgpu)
+
 
 <div class="absolute bottom-0">
 
@@ -860,16 +861,16 @@ We want to write tests in shader code
 
 Validate (expect functions) 
 - in shader code for common cases
-- in host code (e.g. TypeScript) for complicated cases
 
 Add more shader validators over time
-- enables more tests to run in shader code
+- enables more tests to be described fully in shader code.
+
 -->
 
 ---
 
-# Integrate with Vitest 
-or jest or mocha if you prefer
+# `wgsl-test`: Vitest Integration Available
+or jest or mocha
 
 ```ts
 import { testCompute } from "wgsl-test";
@@ -887,11 +888,19 @@ const src = `
 const result = await testCompute({ device, src });
 ```
 
-Tests run in Node (Dawn) or Deno (wgpu)
+Return a result and validate in any test library
+
+Handy for complicated validation / setup
+
+<!-- 
+- in host code (e.g. TypeScript) for complicated cases
+
+
+-->
 
 ---
 
-# Image Snapshot Tests with `wgsl-test` 
+# `wgsl-test`: Image Snapshot Tests
 
 <img src="/image_snapshot_fail.png" alt="image snapshot failure example" class="h-100" />
 
@@ -901,6 +910,22 @@ Tests run in Node (Dawn) or Deno (wgpu)
 
 <img src="/wgsl_studio_unit_test.png" alt="vscode wgsl-studio unit tests" class="h-100" />
 
+<!--
+We've a new vscode extension available called wgsl-studio.
+
+It uses the wgsl-test core (and the Dawn webgpu engine) to support a test runner in the browser.
+
+On the left you can see that the 'test explorer' shows both vitest tests and native tests.
+
+On the right you can see errors reported along with the failing function.
+
+As an aside on design here..
+The astute observer might notice that the error is reported at the function, not the 'expect' call that's failing.
+
+This is an example of how tool needs can drive the design for language extensions. 
+- users want a tool to run tests in their dev environment
+- to build a better tool, we need some language affordance to report the current source line.
+-->
 
 ---
 
