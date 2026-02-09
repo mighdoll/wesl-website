@@ -851,7 +851,22 @@ Validate with shader functions.
 
 Or return result and validate in host code. 
 
+<div class="absolute bottom-0">
+
 [wgsl-test](https://github.com/wgsl-tooling-wg/wesl-js/tree/main/tools/packages/wgsl-test)
+</div>
+
+<!--
+We want to write tests in shader code
+- that's how shader functions are meant to be called
+
+Validate (expect functions) 
+- in shader code for common cases
+- in host code (e.g. TypeScript) for complicated cases
+
+Add more shader validators over time
+- enables more tests to run in shader code
+-->
 
 ---
 
