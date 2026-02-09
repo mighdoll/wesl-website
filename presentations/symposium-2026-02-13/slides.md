@@ -899,6 +899,9 @@ Tests run in Node (Dawn) or Deno (wgpu)
 
 # wgsl-studio: VSCode Tests
 
+<img src="/wgsl_studio_unit_test.png" alt="vscode wgsl-studio unit tests" class="h-100" />
+
+
 ---
 
 # wgsl-studio: VSCode Shader Previews
