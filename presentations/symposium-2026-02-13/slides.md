@@ -971,11 +971,6 @@ See shader output in real-time as you edit
 </div>
 
 <!--
-mandelbrot in player
-
-mandelbrot, edit live
-
-[embed in slidehow]
 -->
 
 ---
@@ -991,7 +986,7 @@ onMounted(() => initPlayer("demo-player", mandelbrotProject))
 </script>
 
 <!--
-mandelbrot in player
+change to use lygia draw-shapes
 -->
 
 ---
