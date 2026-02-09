@@ -1224,7 +1224,7 @@ layout: center
 
 ---
 
-# Extensions enable ecosystem tools
+# Extensions Enable Tools
 
 <div class="mt-4">
 
