@@ -1,9 +1,21 @@
 import "wgsl-edit"
 import "wgsl-play"
 import mandelbrotSrc from "./mandelbrot.wesl?raw"
+import graphicsSrc from "./graphics.wesl?raw"
 import gradientSrc from "./gradient.wesl?raw"
 
-export { mandelbrotSrc, gradientSrc }
+export const mandelbrotProject = {
+  weslSrc: {
+    "package::main": mandelbrotSrc,
+    "package::graphics": graphicsSrc,
+  },
+}
+
+export const gradientProject = {
+  weslSrc: {
+    "package::main": gradientSrc,
+  },
+}
 
 /** Stop keyboard events from bubbling to Slidev navigation */
 function trapKeys(el: HTMLElement) {
@@ -12,22 +24,20 @@ function trapKeys(el: HTMLElement) {
   }
 }
 
-export function initPlayer(id: string, src: string) {
+export function initPlayer(id: string, project: Record<string, unknown>) {
   const el = document.getElementById(id)
   if (!el) return
   trapKeys(el)
-  const trySet = () => { (el as any).source = src }
-  // Set source after WebGPU is ready, or retry if not yet initialized
+  const trySet = () => { (el as any).project = project }
   el.addEventListener("ready", trySet, { once: true })
-  // Also try immediately in case it's already ready
   trySet()
 }
 
-export function initEditor(id: string, src: string) {
+export function initEditor(id: string, project: Record<string, unknown>) {
   const el = document.getElementById(id)
   if (!el) return
   trapKeys(el)
-  ;(el as any).source = src
+  ;(el as any).project = project
 }
 
 export function connectPlayerToEditor(playerId: string, editorId: string) {

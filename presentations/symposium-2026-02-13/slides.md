@@ -929,8 +929,8 @@ mandelbrot, edit live
 
 <script setup>
 import { onMounted } from "vue"
-import { initPlayer, mandelbrotSrc } from "./wgsl-demos"
-onMounted(() => initPlayer("demo-player", mandelbrotSrc))
+import { initPlayer, mandelbrotProject } from "./wgsl-demos"
+onMounted(() => initPlayer("demo-player", mandelbrotProject))
 </script>
 
 <!--
@@ -945,8 +945,8 @@ mandelbrot in player
 
 <script setup>
 import { onMounted } from "vue"
-import { initEditor, mandelbrotSrc } from "./wgsl-demos"
-onMounted(() => initEditor("demo-editor", mandelbrotSrc))
+import { initEditor, mandelbrotProject } from "./wgsl-demos"
+onMounted(() => initEditor("demo-editor", mandelbrotProject))
 </script>
 
 <!--
@@ -964,9 +964,9 @@ mandelbrot in editor
 
 <script setup>
 import { onMounted } from "vue"
-import { initEditor, gradientSrc, connectPlayerToEditor } from "./wgsl-demos"
+import { initEditor, gradientProject, connectPlayerToEditor } from "./wgsl-demos"
 onMounted(() => {
-  initEditor("combo-editor", gradientSrc)
+  initEditor("combo-editor", gradientProject)
   connectPlayerToEditor("combo-player", "combo-editor")
 })
 </script>
