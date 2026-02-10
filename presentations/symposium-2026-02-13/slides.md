@@ -1073,7 +1073,7 @@ import lygia::sdf::gearSDF;
 
 <div>
 
-<wgsl-play id="demo-player" style="width: 400px; height: 400px; display: block;"></wgsl-play>
+<wgsl-play id="demo-player" style="width: 400px; height: 400px; display: block;" autoplay="false"></wgsl-play>
 
 </div>
 
@@ -1168,7 +1168,7 @@ and it interoperates with wgsl-play
 
 <div style="display: flex; gap: 1rem; height: 420px; margin-top: 1rem;">
   <wgsl-edit id="combo-editor" style="flex: 1; min-width: 0; overflow: hidden; display: block;" theme="light"></wgsl-edit>
-  <wgsl-play id="combo-player" style="width: 400px; aspect-ratio: 1; flex-shrink: 0; align-self: start; display: block;"></wgsl-play>
+  <wgsl-play id="combo-player" style="width: 400px; aspect-ratio: 1; flex-shrink: 0; align-self: start; display: block;" autoplay="false"></wgsl-play>
 </div>
 
 <script setup>

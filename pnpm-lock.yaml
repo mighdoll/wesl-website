@@ -43,8 +43,8 @@ importers:
         specifier: ^0.0.3
         version: 0.0.3
       wgsl-play:
-        specifier: ^0.0.20
-        version: 0.0.20
+        specifier: ^0.0.22
+        version: 0.0.22
 
   presentations/wgsl-test-2026-01-13:
     dependencies:
@@ -4188,8 +4188,11 @@ packages:
   wesl-fetch@0.0.2:
     resolution: {integrity: sha512-/RZL3cyYzr67w9mjQXYV6Y6V7dMuQixcXlZ23XqycnrN0qvjPlNKvAqF5L1007OQ/Xz5FPhtN0vjAc2p1nYfDQ==}
 
-  wesl-gpu@0.1.18:
-    resolution: {integrity: sha512-/2Quh59XRYX3oEQXuWhsshyaPm+EAbbRtu3nNxObPUNUO+sw6kq/UtEKtvASIWCQ5u9je5oso6dK11KOFDNhlA==}
+  wesl-fetch@0.0.3:
+    resolution: {integrity: sha512-eS2ITZ8VpUr59tQ8y4SRQQeBJ8yaDOLfN+Jda5hk17PGq33KDFFoCdiUP+bLwLDlvN5SbdmQNgztGdVwgNjJWQ==}
+
+  wesl-gpu@0.1.19:
+    resolution: {integrity: sha512-j0X7a1qMpp5noR7Lli0U5v6GFJ0hCvX6NX8PMSIVmsvkYeub+5WAv7nmnhRjoijl7p5M1ASSsecCBkgycvourA==}
 
   wesl-plugin@0.6.64:
     resolution: {integrity: sha512-FJedzxaGCAvlPGOfJufYOjIKL9jpJBApTlxSJuG0mnfFRSLCb4t5hhKP0Swa9rhj6v8D2NDicByZhXbCJU9xpA==}
@@ -4225,11 +4228,19 @@ packages:
       random_wgsl:
         optional: true
 
+  wesl@0.7.16:
+    resolution: {integrity: sha512-3UbTkr/jDixlL6W1+9FiIeSfuOrXODP3P62aG6OXkLqPAZ7kz4MusdGcr4F2TxIGrJ1tcms/WTErEtdLKjbSyA==}
+    peerDependencies:
+      random_wgsl: ^0.6.65
+    peerDependenciesMeta:
+      random_wgsl:
+        optional: true
+
   wgsl-edit@0.0.3:
     resolution: {integrity: sha512-harTr7YmVGX9ZPhvsk+umcLl832VKogGrmySY+CZ4FHk8PGxYrolQ4EUaIFTpDuVoRevpUxUt37wny2kzWGHmA==}
 
-  wgsl-play@0.0.20:
-    resolution: {integrity: sha512-S4N3X/CXEQoaYwF7Q5gdyX+qRth+HXnEqr36nYT/xyYfHmT/B8UNoBslus9k7S8ZZ158kgmug8Strq9MWRH4iA==}
+  wgsl-play@0.0.22:
+    resolution: {integrity: sha512-iWevy5YJow+hUGebQYRUUkltlzaw59xZxnYFx9Gu+FIC+gFu4xsga/N2YBk3PntQOSo9qlR6DgQTCT2BhHFXEg==}
 
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
@@ -9217,10 +9228,20 @@ snapshots:
     transitivePeerDependencies:
       - random_wgsl
 
-  wesl-gpu@0.1.18:
+  wesl-fetch@0.0.3:
+    dependencies:
+      es-module-lexer: 1.7.0
+      fflate: 0.8.2
+      nanotar: 0.2.0
+      resolve.exports: 2.0.3
+      wesl: 0.7.16
+    transitivePeerDependencies:
+      - random_wgsl
+
+  wesl-gpu@0.1.19:
     dependencies:
       thimbleberry: 0.2.10
-      wesl: 0.7.15
+      wesl: 0.7.16
     transitivePeerDependencies:
       - random_wgsl
 
@@ -9237,6 +9258,8 @@ snapshots:
 
   wesl@0.7.15: {}
 
+  wesl@0.7.16: {}
+
   wgsl-edit@0.0.3:
     dependencies:
       '@codemirror/language': 6.12.1
@@ -9251,11 +9274,11 @@ snapshots:
     transitivePeerDependencies:
       - random_wgsl
 
-  wgsl-play@0.0.20:
+  wgsl-play@0.0.22:
     dependencies:
-      wesl: 0.7.15
-      wesl-fetch: 0.0.2
-      wesl-gpu: 0.1.18
+      wesl: 0.7.16
+      wesl-fetch: 0.0.3
+      wesl-gpu: 0.1.19
     transitivePeerDependencies:
       - random_wgsl
 
