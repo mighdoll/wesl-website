@@ -1090,6 +1090,8 @@ onMounted(() => {
 
 <!--
 editor and player linked: edit code, see live output
+
+ + .5 * random_wgsl::pcg_2u_3f(vec2u(pos.xy));
 -->
 
 ---
