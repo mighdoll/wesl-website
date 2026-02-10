@@ -936,11 +936,17 @@ This is an example of how tool needs can drive the design for language extension
 <!--
 Image Snapshot tests are visible in wgsl-studio. 
 
+(the user has right clicked 'show preview')
+
 These are rendered live with the gpu.
 
 We're aiming for a convergence between the test api and preview api.
 
-Adding annotations to shaders for test setup is pretty similar to adding annotations for shader previews.
+Adding annotations to shaders for image tests is pretty similar to adding annotations for shader previews.
+
+that'll be future work..
+
+your thoughts welcome on test and shadertoy style interfaces!
 -->
 
 ---
@@ -971,6 +977,7 @@ See shader output in real-time as you edit
 </div>
 
 <!--
+Some web components for using wgsl/wesl on web pages.
 -->
 
 ---
@@ -1041,7 +1048,12 @@ onMounted(() => initPlayer("demo-player", drawShapesProject))
 </script>
 
 <!--
+first,
+
 wgsl-play is a convenient way to put simple shaders on a web page
+
+note that this is the same code as the image snapshot tests,
+so regression tests can do double duty as demos.
 
 you can put the shader code inline in the html
 
@@ -1104,6 +1116,10 @@ uses codemirror under the hood, easy to embed even on mobile
 tabbed interface
 
 inline errors
+
+again just a couple of lines to drop onto your web page and you can have a wgsl editor.
+
+and it interoperates with wgsl-play
 -->
 
 ---
@@ -1136,11 +1152,15 @@ see errors from the WESL transpiler
 It's all web based.. so we can do things like
 load new packages straight from npm on demand.
 
+I'm going add a little noise to the image from another npm library
+
  + .5 * random_wgsl::pcg_2u_3f(vec2u(pos.xy))
 
 watch the lower left
 
-[add comma]
+[add semicolon]
+
+That's the notification as the web page loads from npm.
 -->
 
 ---
