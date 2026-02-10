@@ -975,7 +975,7 @@ See shader output in real-time as you edit
 
 ---
 
-# `<wgsl-play>`: HTML Viewer 
+# `<wgsl-play>`: Web Viewer 
 
 <div class="grid grid-cols-2 gap-4 mt-4">
 
@@ -1056,7 +1056,7 @@ It's handy to have language extension for modules that's aware of libraries!
 
 ---
 
-# wgsl-edit
+# `<wgsl-edit>` Web Editor
 
 <wgsl-edit id="demo-editor" style="width: 90%; height: 400px; display: block; margin: 1rem auto;" theme="light"></wgsl-edit>
 
