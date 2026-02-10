@@ -970,15 +970,16 @@ here the user has right clicked 'show preview'
 
 These are rendered live with the gpu.
 
-We're aiming for a convergence between the test api and preview api.
-
 Remember the test case from a few slides ago.
-This literally the same code.
+This is the same code.
 
-Direction / observation
-Adding annotations to shaders for image tests is pretty similar to adding annotations for shader previews.
+You can preview shaders even if they're not tests.
 
-that'll be future work..
+We're aiming for annotations you put on shaders to make them runnable as tests.
+
+Adding annotations to shaders to make shaders runnable is pretty much what you need for shader previews too.
+
+that'll be interesting future work this year.
 
 your thoughts welcome on test and shadertoy style interfaces!
 -->
@@ -1092,7 +1093,7 @@ wgsl-play is a convenient way to put simple shaders on a web page
 note that this is the same code as the image snapshot tests,
 so regression tests can do double duty as demos.
 
-and it's also used inside the vscode extension.
+this is the component used inside the vscode extension too.
 
 you can put the shader code inline in the html
 
