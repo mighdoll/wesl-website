@@ -1339,11 +1339,11 @@ layout: center
 
 <div class="mt-4">
 
-<p><em>+ imports + std config</em> <v-click><span>→ cli link, vite plugins, language server</span></v-click></p>
-<v-click><p><em>+ packaging format</em> <v-click><span>→ npm/cargo libraries </span></v-click></p></v-click>
-<v-click><p><em>+ annotations + reflection</em> <v-click><span>→ wgsl-test</span></v-click></p></v-click>
-<v-click><p><em>+ libraries</em> <v-click><span>→ wgsl-play, wgsl-edit</span></v-click></p></v-click>
-<v-click><p><em>+ conditions + visibility + generics</em> <v-click><span>→ richer libraries</span></v-click></p></v-click>
+<v-click at="1"><p><em>+ imports + std config</em> <v-click at="2"><span>→ cli link, vite plugins, language server</span></v-click></p>
+<p><em>+ packaging format</em> <v-click at="2"><span>→ npm/cargo libraries </span></v-click></p>
+<p><em>+ annotations + reflection</em> <v-click at="2"><span>→ wgsl-test</span></v-click></p>
+<p><em>+ libraries</em> <v-click at="2"><span>→ wgsl-play, wgsl-edit</span></v-click></p>
+<p><em>+ conditions + visibility + generics</em> <v-click at="2"><span>→ richer libraries</span></v-click></p></v-click>
 
 </div>
 
