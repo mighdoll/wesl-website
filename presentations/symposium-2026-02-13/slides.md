@@ -1081,9 +1081,9 @@ mandelbrot in editor
 
 <script setup>
 import { onMounted } from "vue"
-import { initEditor, gradientProject, connectPlayerToEditor } from "./wgsl-demos"
+import { initEditor, mandelbrotProject, connectPlayerToEditor } from "./wgsl-demos"
 onMounted(() => {
-  initEditor("combo-editor", gradientProject)
+  initEditor("combo-editor", mandelbrotProject)
   connectPlayerToEditor("combo-player", "combo-editor")
 })
 </script>
