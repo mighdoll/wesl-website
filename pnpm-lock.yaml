@@ -43,8 +43,8 @@ importers:
         specifier: ^0.0.3
         version: 0.0.3
       wgsl-play:
-        specifier: ^0.0.22
-        version: 0.0.22
+        specifier: ^0.0.23
+        version: 0.0.23
 
   presentations/wgsl-test-2026-01-13:
     dependencies:
@@ -4239,8 +4239,8 @@ packages:
   wgsl-edit@0.0.3:
     resolution: {integrity: sha512-harTr7YmVGX9ZPhvsk+umcLl832VKogGrmySY+CZ4FHk8PGxYrolQ4EUaIFTpDuVoRevpUxUt37wny2kzWGHmA==}
 
-  wgsl-play@0.0.22:
-    resolution: {integrity: sha512-iWevy5YJow+hUGebQYRUUkltlzaw59xZxnYFx9Gu+FIC+gFu4xsga/N2YBk3PntQOSo9qlR6DgQTCT2BhHFXEg==}
+  wgsl-play@0.0.23:
+    resolution: {integrity: sha512-DylH3qeKzJfgeN6Tk9xjqEFwysSEGMzpoUi9sI94M3y4hrD9zRHDD8rhRQrLFe1v4W87V8hNtSaPbm57ygNcxw==}
 
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
@@ -9274,7 +9274,7 @@ snapshots:
     transitivePeerDependencies:
       - random_wgsl
 
-  wgsl-play@0.0.22:
+  wgsl-play@0.0.23:
     dependencies:
       wesl: 0.7.16
       wesl-fetch: 0.0.3

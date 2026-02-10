@@ -30,22 +30,11 @@ function trapKeys(el: HTMLElement) {
   }
 }
 
-type WgslPlayEl = HTMLElement & {
-  project: Record<string, unknown>;
-  pause(): void;
-  play(): void;
-};
-
-export function initPlayer(
-  id: string,
-  project: Record<string, unknown>,
-  autoplay = true,
-) {
-  const el = document.getElementById(id) as WgslPlayEl | null;
+export function initPlayer(id: string, project: Record<string, unknown>) {
+  const el = document.getElementById(id);
   if (!el) return;
   trapKeys(el);
-  if (!autoplay) el.pause();
-  el.project = project;
+  (el as HTMLElement & { project: Record<string, unknown> }).project = project;
 }
 
 export function initEditor(id: string, project: Record<string, unknown>) {
@@ -55,15 +44,10 @@ export function initEditor(id: string, project: Record<string, unknown>) {
   (el as HTMLElement & { project: Record<string, unknown> }).project = project;
 }
 
-export function connectPlayerToEditor(
-  playerId: string,
-  editorId: string,
-  autoplay = true,
-) {
-  const player = document.getElementById(playerId) as WgslPlayEl | null;
+export function connectPlayerToEditor(playerId: string, editorId: string) {
+  const player = document.getElementById(playerId);
   if (player) {
     trapKeys(player);
-    if (!autoplay) player.pause();
     player.setAttribute("source", editorId);
   }
   const editor = document.getElementById(editorId);

@@ -12,6 +12,6 @@
     "lygia": "latest",
     "wesl-plugin": "latest",
     "wgsl-edit": "^0.0.3",
-    "wgsl-play": "^0.0.22"
+    "wgsl-play": "^0.0.23"
   }
 }

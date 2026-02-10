@@ -1087,7 +1087,7 @@ import lygia::sdf::gearSDF;
 <script setup>
 import { onMounted } from "vue"
 import { initPlayer, drawShapesProject } from "./wgsl-demos"
-onMounted(() => initPlayer("demo-player", drawShapesProject, false))
+onMounted(() => initPlayer("demo-player", drawShapesProject))
 </script>
 
 <!--
@@ -1181,7 +1181,7 @@ import { onMounted } from "vue"
 import { initEditor, mandelbrotProject, connectPlayerToEditor } from "./wgsl-demos"
 onMounted(() => {
   initEditor("combo-editor", mandelbrotProject);
-  connectPlayerToEditor("combo-player", "combo-editor", false);
+  connectPlayerToEditor("combo-player", "combo-editor");
 });
 </script>
 
