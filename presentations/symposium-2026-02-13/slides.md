@@ -1065,16 +1065,26 @@ It's handy to have language extension for modules that's aware of libraries!
 
 ```html
 /// index.html
-<wgsl-edit id="editor"></wgsl-edit>
+<wgsl-edit id="edit"></wgsl-edit>
 ```
+
+<v-click>
 
 <div style="margin-top: 2rem;">
 
-### Shader inline in HTML
-or
-### Shaders in separate files
-
+### Combine with wgsl-play
 </div>
+
+<div style="margin-top: .5rem;">
+
+```html
+<wgsl-play id="play" source="edit"></wgsl-play>
+
+<wgsl-edit id="edit" lint-from="play"></wgsl-edit>
+```
+</div>
+
+</v-click>
 
 </div>
 </div>
@@ -1087,6 +1097,13 @@ onMounted(() => initEditor("demo-editor", mandelbrotProject))
 
 <!--
 another web component called wgsl-edit is available
+for people who want to put a WebGPU shader editor on their sites
+
+uses codemirror under the hood, easy to embed even on mobile
+
+tabbed interface
+
+inline errors
 -->
 
 ---
@@ -1110,7 +1127,20 @@ onMounted(() => {
 <!--
 editor and player linked: edit code, see live output
 
- + .5 * random_wgsl::pcg_2u_3f(vec2u(pos.xy));
+[edit vec4f to vec3f]
+see errors from Dawn
+
+[rm comma after purple]
+see errors from the WESL transpiler
+
+It's all web based.. so we can do things like
+load new packages straight from npm on demand.
+
+ + .5 * random_wgsl::pcg_2u_3f(vec2u(pos.xy))
+
+watch the lower left
+
+[add comma]
 -->
 
 ---
