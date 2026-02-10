@@ -1,7 +1,6 @@
-import test::Uniforms;
 import package::graphics::mandelbrot;
 
-@group(0) @binding(0) var<uniform> u: Uniforms;
+@group(0) @binding(0) var<uniform> u: test::Uniforms;
 
 @fragment
 fn fs_main(@builtin(position) pos: vec4f) 
