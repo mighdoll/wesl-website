@@ -188,18 +188,23 @@ All our tools support vanilla WGSL plus a sprinkling of extra features.
 <!--
 A thought on how we think about the **design center** for WebGPU/WGSL/WESL.
 
-We expect that as WebGPU proliferates, there'll be a lot of small projects.
+Those of us working on the project aspire to become knowldedgable about language and gpu features..
+
+and some set of our users too really want power features.
+
+But we expect that as WebGPU proliferates, there'll be a lot of small projects.
 Lots of part time shader programmers. 
 So there's a premium on **simplicity**.
 
-Meanwhile we want to support useful libraries, and larger game engines,
-like Bevy.  So we judiciously add power to the language.
+So we're trying to be judicious about adding power features.
 
-Also, we're "blessed" with supporting multiple host languages. 
+Every new feature is a 'tax' on new users. And typically, the web is frothy, lots of new users all the time.
 
-We try to chart a neutral path and not to match Rust or TypeScript or C++ 
+Also, we try to chart a neutral path among language influences. 
 
-or any other of our favorite languages like ocaml or scala or LEAN.
+In particular, we don't assume that users already are already familiar with idioms from Rust or TypeScript or C++. 
+
+And we aware that any ideas we're tempted to bring from languages like ocaml or scala have to pay their weight in new user learning tax.
 -->
 
 ---
