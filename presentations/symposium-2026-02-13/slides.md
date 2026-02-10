@@ -50,7 +50,14 @@ Mathis Brossier (in spirit)
 text-gray-400">                                           
 Shader Languages Symposium<br>
 February 2026
-</div>                                                    
+</div>
+
+<!--
+We're going to talk about our extensions to WebGPU's WGSL
+
+and the user tooling needs that drive those extensions.
+-->
+
 ---
 
 # Vision
@@ -100,13 +107,13 @@ Shader library packaging formats
 </div>
 
 <!--
-We actually started down the path of adding writing shader languages extensions because we were trying to fill some community needs for WebGPU tooling.
+We actually started down this because we were trying to fill some community needs for WebGPU tooling.
 
-We discovered that we really wanted some language features to support tooling.
+We discovered that we really wanted some language extension features to support tooling.
 
-That's where we started. 
+That's where we started. Basically trying to write #include but better.
 
-As we got going, we realized that
+As we got going, we realized that:
 
 Extending the language outside the browser core makes sense for two reasons:
 - it's easier to iterate: open source tools vs. multiple browsers.
@@ -130,7 +137,7 @@ Extending the language outside the browser core makes sense for two reasons:
 <!--
 We try to work closely with the WebGPU committee. 
 
-WESL extensions are designed to be possible future WGSL features.
+WESL extensions are designed to be possible future browser implementation.
 
 Our work is a support, not a substitute for WebGPU/WGSL.
 -->
@@ -545,12 +552,16 @@ A peek at what linking looks like for an app.
 
 Our goal:
 
-- very few lines of code to add WESL to a WebGPU project
+very few lines of code to add WESL to a WebGPU project
 
-- Meet developers where they are.
-Enhance the tools/workflow they already use.
+Meet developers where they are.
+Plugin the tools/workflow they already use.
 
-- so significant effort towards making e.g. JavaScript/TypeScript bundler plugins.
+So significant effort towards making e.g. JavaScript/TypeScript bundler plugins.
+
+If you're a typescript developer using a bundler the left side should look vaguely familiar 
+
+If you're a rust developer, plugging into build.rs should be familiar.
 
 cli tools are also available for linking too, for users with more custom build setups
 
@@ -630,6 +641,14 @@ Shader libraries as npm packages
 
 </div>
 
+<!--
+use for example Lygia a large collection of shader functions from the Book of Shaders
+
+just:  npm add lygia
+
+just like you would any other package
+-->
+
 ---
 
 <img src="/lygia_cargo.png" alt="Lygia crate" class="h-100" />
@@ -646,6 +665,12 @@ same sources, published two ways.
 
 `cargo add lygia`
 </div>
+
+<!--
+and cargo will just about the same way
+
+in a few days :-)
+-->
 
 ---
 
@@ -813,17 +838,9 @@ VS Code extension for running tests, previewing images
 <!--
 Goal: integrate with existing test frameworks and VSCode
 
-- Unit testing (something increasingly important in the AI era)
+Unit testing (something increasingly important in the AI era)
 
-- image snapshot testing
-
-[add image snapshots:
-- see src of unit and regression test
-- vitest terminal runs test
-- see image regression
-- see wgsl-studio test runner / failure
-- see wgsl-studio embedded player
-]
+image snapshot testing
 -->
 
 ---
@@ -837,7 +854,8 @@ import wgsl_test::expectNear;         // expectations
 
 @test  // tag each test fn
 fn smootherstepQuarter() {
-  expectNear(smootherstep(0.0, 1.0, 0.25), 0.103516);
+  const result = smootherstep(0.0, 1.0, 0.25);
+  expectNear(result, 0.103516);
 }
 ```
 
@@ -857,14 +875,14 @@ Tests run in Node (Dawn) or Deno (wgpu)
 
 <!--
 We want to write tests in shader code
-- that's how shader functions are meant to be called
 
-Validate (expect functions) 
-- in shader code for common cases
+that's how shader functions are meant to be called
 
+Validate (expect functions) in shader code where that's easy.
 Add more shader validators over time
-- enables more tests to be described fully in shader code.
+enables more tests to be described fully in shader code.
 
+The tests can run using Google's Dawn or Mozilla's implementation of WebGPU
 -->
 
 ---
@@ -892,10 +910,12 @@ Return a result and validate in any test library
 
 Handy for complicated validation / setup
 
-<!-- 
-- in host code (e.g. TypeScript) for complicated cases
+<!--
+here's a simple example of running the same kind of test and returning the result back to
+to run validation in TypeScript.
 
-
+In this simple example there's no need,
+but you can imagine for complicated statistical tests or something, you might prefer to write the validation in host code.
 -->
 
 ---
@@ -903,6 +923,14 @@ Handy for complicated validation / setup
 # `wgsl-test`: Image Snapshot Tests
 
 <img src="/image_snapshot_fail.png" alt="image snapshot failure example" class="h-100" />
+
+<!--
+you can also do image snapshot testing.
+
+It produces a nice little html report on failures.
+
+This is a test from Lygia, looking at a few of the signed distance functions.
+-->
 
 ---
 
@@ -925,6 +953,8 @@ The astute observer might notice that the error is reported at the function, not
 This is an example of how tool needs can drive the design for language extensions. 
 - users want a tool to run tests in their dev environment
 - to build a better tool, we need some language affordance to report the current source line.
+
+We're setup to do that now, it's a good place to be.
 -->
 
 ---
@@ -936,12 +966,16 @@ This is an example of how tool needs can drive the design for language extension
 <!--
 Image Snapshot tests are visible in wgsl-studio. 
 
-(the user has right clicked 'show preview')
+here the user has right clicked 'show preview'
 
 These are rendered live with the gpu.
 
 We're aiming for a convergence between the test api and preview api.
 
+Remember the test case from a few slides ago.
+This literally the same code.
+
+Direction / observation
 Adding annotations to shaders for image tests is pretty similar to adding annotations for shader previews.
 
 that'll be future work..
@@ -955,13 +989,12 @@ layout: center
 
 # Web Site Tools
 
-<!-- 
-Library developers can show editable sample code 
-with live error checking.
+<!--
+next set of tools
 
-Web developers can embed a player. 
-
+adding WebGPU to web sites.
 -->
+
 ---
 
 # wgsl-play / wgsl-edit
@@ -977,7 +1010,11 @@ See shader output in real-time as you edit
 </div>
 
 <!--
-Some web components for using wgsl/wesl on web pages.
+Some web components for use on web pages
+
+Editable sample code with live error checking.
+
+Web developers can embed a player.
 -->
 
 ---
@@ -1055,6 +1092,8 @@ wgsl-play is a convenient way to put simple shaders on a web page
 note that this is the same code as the image snapshot tests,
 so regression tests can do double duty as demos.
 
+and it's also used inside the vscode extension.
+
 you can put the shader code inline in the html
 
 or keep it in a separate file.
@@ -1063,7 +1102,7 @@ in this example we're using the wesl-plugin's ?link
 
 That automatically loads all the dependencies from draw-shapes.wesl
 
-It's handy to have language extension for modules that's aware of libraries!
+It's handy to have language extension for shader module composition that's aware of libraries
 -->
 
 ---
@@ -1108,7 +1147,7 @@ onMounted(() => initEditor("demo-editor", mandelbrotProject))
 </script>
 
 <!--
-another web component called wgsl-edit is available
+another web component called wgsl-edit
 for people who want to put a WebGPU shader editor on their sites
 
 uses codemirror under the hood, easy to embed even on mobile
