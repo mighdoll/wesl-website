@@ -1075,17 +1075,17 @@ mandelbrot in editor
 # wgsl-edit + wgsl-play
 
 <div style="display: flex; gap: 1rem; height: 420px; margin-top: 1rem;">
-  <wgsl-edit id="combo-editor" style="flex: 1; display: block;" theme="light"></wgsl-edit>
-  <wgsl-play id="combo-player" style="width: 400px; display: block;"></wgsl-play>
+  <wgsl-edit id="combo-editor" style="flex: 1; min-width: 0; overflow: hidden; display: block;" theme="light"></wgsl-edit>
+  <wgsl-play id="combo-player" style="width: 400px; aspect-ratio: 1; flex-shrink: 0; align-self: start; display: block;"></wgsl-play>
 </div>
 
 <script setup>
 import { onMounted } from "vue"
 import { initEditor, mandelbrotProject, connectPlayerToEditor } from "./wgsl-demos"
 onMounted(() => {
-  initEditor("combo-editor", mandelbrotProject)
-  connectPlayerToEditor("combo-player", "combo-editor")
-})
+  initEditor("combo-editor", mandelbrotProject);
+  connectPlayerToEditor("combo-player", "combo-editor");
+});
 </script>
 
 <!--
