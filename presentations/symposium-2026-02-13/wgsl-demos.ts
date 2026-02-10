@@ -5,6 +5,7 @@ import drawShapesConfig from "./draw-shapes.wesl?link";
 import gradientSrc from "./gradient.wesl?raw";
 import graphicsSrc from "./graphics.wesl?raw";
 import mandelbrotSrc from "./mandelbrot.wesl?raw";
+import zoomSrc from "./zoom.wesl?raw";
 
 export const drawShapesProject = drawShapesConfig;
 
@@ -12,6 +13,7 @@ export const mandelbrotProject = {
   weslSrc: {
     "main.wesl": mandelbrotSrc,
     "graphics.wesl": graphicsSrc,
+    "zoom.wesl": zoomSrc,
   },
 };
 

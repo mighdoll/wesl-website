@@ -1,14 +1,13 @@
-import package::graphics::mandelbrot_uv;
+import package::zoom::mandelbrotZoom;
 
 @group(0) @binding(0) var<uniform> u: test::Uniforms;
 
 @fragment
 fn fs_main(@builtin(position) pos: vec4f)
     -> @location(0) vec4f {
-
-  let t = mandelbrot_uv(pos.xy / u.resolution);
-  let c = purple(t);
-  return vec4f(c, 1.0);
+  let uv = pos.xy / u.resolution;
+  let t = mandelbrotZoom(uv, u.time);
+  return vec4f(purple(t), 1.0);
 }
 
 fn purple(t: f32) -> vec3f {
