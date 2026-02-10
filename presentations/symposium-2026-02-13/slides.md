@@ -1233,6 +1233,45 @@ layout: center
 
 ---
 
+# Extensions Enable Tools
+
+```mermaid
+flowchart LR
+
+  U("User Needs"):::data 
+
+  T("User Tools"):::data <--> E
+  U --> E
+  
+  E(Shader Language Extensions):::foo <--> W
+  W(WebGPU):::data
+  U --> W
+  W --> O(SPIR-V<br>MSL<br>HLSL):::data
+
+  classDef transform fill:#dbe9f2,stroke:#333;
+  classDef foo fill:#dbe9f2,stroke:#333;
+  classDef data fill:#e3d5e3, stroke:#333;
+```
+
+<div class="mt-4">
+
+<v-click at="1"><p><em>+ imports + std config</em> <v-click at="2"><span>→ cli link, vite plugins, language server</span></v-click></p>
+<p><em>+ packaging format</em> <v-click at="2"><span>→ npm/cargo libraries </span></v-click></p>
+<p><em>+ annotations + reflection</em> <v-click at="2"><span>→ wgsl-test</span></v-click></p>
+<p><em>+ libraries</em> <v-click at="2"><span>→ wgsl-play, wgsl-edit</span></v-click></p>
+<p><em>+ conditions + visibility + generics</em> <v-click at="2"><span>→ richer libraries</span></v-click></p></v-click>
+
+</div>
+
+<!--
+Pooling user requested extensions lets us make *shared tooling* to benefit many projects.
+
+And tools themselves create new needs from the shader language. 
+
+A virtuous cycle.
+-->
+---
+
 # WESL for other Shader Languages?
 
 <div>
@@ -1332,25 +1371,3 @@ layout: center
 ---
 
 # Extras
-
----
-
-# Extensions Enable Tools
-
-<div class="mt-4">
-
-<v-click at="1"><p><em>+ imports + std config</em> <v-click at="2"><span>→ cli link, vite plugins, language server</span></v-click></p>
-<p><em>+ packaging format</em> <v-click at="2"><span>→ npm/cargo libraries </span></v-click></p>
-<p><em>+ annotations + reflection</em> <v-click at="2"><span>→ wgsl-test</span></v-click></p>
-<p><em>+ libraries</em> <v-click at="2"><span>→ wgsl-play, wgsl-edit</span></v-click></p>
-<p><em>+ conditions + visibility + generics</em> <v-click at="2"><span>→ richer libraries</span></v-click></p></v-click>
-
-</div>
-
-<!--
-Pooling user requested extensions lets us make *shared tooling* to benefit many projects.
-
-And tools themselves create new needs from the shader language. 
-
-A virtuous cycle.
--->
