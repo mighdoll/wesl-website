@@ -1,5 +1,10 @@
 alias Complex = vec2f;
 
+fn mandelbrot_uv(uv: vec2f) -> f32 {
+  let c = vec2f(uv.x * 3.5 - 2.5, uv.y * 2.0 - 1.0);
+  return mandelbrot(c);
+}
+
 fn mandelbrot(c: Complex) -> f32 {
   var z = vec2f(0.0);
   var count = 0u;
