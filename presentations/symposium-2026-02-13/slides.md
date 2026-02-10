@@ -1056,9 +1056,26 @@ It's handy to have language extension for modules that's aware of libraries!
 
 ---
 
-# `<wgsl-edit>` Web Editor
+# `<wgsl-edit>`: Web Editor
 
-<wgsl-edit id="demo-editor" style="width: 90%; height: 400px; display: block; margin: 1rem auto;" theme="light"></wgsl-edit>
+<div class="grid grid-cols-2 gap-4 mt-4">
+
+<div>
+
+<wgsl-edit id="demo-editor" style="width: 100%; height: 400px; display: block;" theme="light"></wgsl-edit>
+
+</div>
+
+<div class="space-y-4">
+
+```html
+/// index.html
+<wgsl-edit id="editor"></wgsl-edit>
+```
+
+</div>
+
+</div>
 
 <script setup>
 import { onMounted } from "vue"
@@ -1067,7 +1084,7 @@ onMounted(() => initEditor("demo-editor", mandelbrotProject))
 </script>
 
 <!--
-mandelbrot in editor
+another web component called wgsl-edit is available
 -->
 
 ---
