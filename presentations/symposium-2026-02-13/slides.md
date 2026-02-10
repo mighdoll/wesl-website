@@ -1058,15 +1058,10 @@ It's handy to have language extension for modules that's aware of libraries!
 
 # `<wgsl-edit>`: Web Editor
 
-<div class="grid grid-cols-2 gap-4 mt-4">
+<div style="display: flex; gap: 1rem; margin-top: 1rem;">
+  <wgsl-edit id="demo-editor" style="flex: 1; min-width: 0; overflow: hidden; height: 400px; display: block;" theme="light"></wgsl-edit>
 
-<div>
-
-<wgsl-edit id="demo-editor" style="width: 100%; height: 400px; display: block;" theme="light"></wgsl-edit>
-
-</div>
-
-<div class="space-y-4">
+<div style="width: 400px; flex-shrink: 0;">
 
 ```html
 /// index.html
@@ -1074,7 +1069,6 @@ It's handy to have language extension for modules that's aware of libraries!
 ```
 
 </div>
-
 </div>
 
 <script setup>
