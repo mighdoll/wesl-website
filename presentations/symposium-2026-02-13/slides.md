@@ -1068,6 +1068,14 @@ It's handy to have language extension for modules that's aware of libraries!
 <wgsl-edit id="editor"></wgsl-edit>
 ```
 
+<div style="margin-top: 2rem;">
+
+### Shader inline in HTML
+or
+### Shaders in separate files
+
+</div>
+
 </div>
 </div>
 
