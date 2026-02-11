@@ -1350,13 +1350,22 @@ We'd love to hear experiences from other shader communities.
 
 ### Where can tools help?
 
-### Current language issues
+and where can transpilation help?
 
-- wildcard imports
-- visibility: modules, libraries, and shader-to-host
-- parameterized modules
-- generics / typeclasses / context classes
-- reflection
+### Language design perspectives?
+
+<div class="ml-6">
+
+wildcard imports
+
+visibility: modules, libraries, and shader-to-host
+
+parameterized modules
+
+generics / typeclasses / context classes
+
+reflection
+</div>
 
 
 <!-- 
