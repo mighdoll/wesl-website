@@ -1269,15 +1269,15 @@ flowchart LR
 </div>
 
 <!--
-
 User Tool requests led us to make shader Extensions 
 
-sharing extensions between enables shared tools 
+sharing extensions enables shared tools 
 
-let's us make useful user features 
+Feel like we're in a nice spot right now.
 
-A virtuous cycle.
+Hopefully a virtuous cycle where we can make things better for WebGPU community.
 -->
+
 ---
 
 # Targeting WebGPU? 
@@ -1303,15 +1303,12 @@ WGSL + modules
 source maps into library format..
 </div>
 
-
-
 <!--
 As WebGPU grows in popularity, and 
 especially if our tooling proves useful...
 
 Perhaps our tools can help for other 
-tools and languages that target WebGPU.
-
+projects that target WebGPU.
 -->
 
 ---
@@ -1351,18 +1348,26 @@ WESL has a lot to learn
 
 We'd love to hear experiences from other shader communities.
 
-### Current Discussions
+### Where can tools help?
+
+### Current language issues
 
 - wildcard imports
-- parameterized modules
 - visibility: modules, libraries, and shader-to-host
+- parameterized modules
 - generics / typeclasses / context classes
 - reflection
 
-<!-- 
-We'd love your advice on shader languages.
 
-Really on any topic, but I've listed a few that we're currently talking about.
+<!-- 
+We'd love your advice on tools and shader languages.
+
+If you know people using WebGPU, have them tell us their pain points.
+Maybe we can address some things with tools or language extensions.
+
+Advice on many topics in shader language is welcome too,
+we're getting tempted to dip into deeper design waters.
+
 -->
 
 ---
