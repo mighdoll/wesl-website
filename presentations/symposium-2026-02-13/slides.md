@@ -74,6 +74,83 @@ We can help by building useful tools that 'complete' the developer experience.
 
 ---
 
+# WESL Extensions
+
+````md magic-move
+```wgsl
+
+alias Complex = vec2f;
+
+fn mandelbrot(position: Complex) -> f32 { 
+  .
+  .
+}
+
+@fragment
+fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
+  let escaped = mandelbrot(uv * 3.0 - vec2f(2.0, 1.5));    
+  let color = vec3f(escaped);
+ 
+  return vec4(color, 1.0);
+}
+```
+```wgsl
+import super::graphics::mandelbrot;
+
+@fragment
+fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
+  let escaped = mandelbrot(uv * 3.0 - vec2f(2.0, 1.5));    
+  let color = vec3f(escaped);
+ 
+  return vec4(color, 1.0);
+}
+```
+```wgsl
+import super::graphics::mandelbrot;
+import lygia::color::palette::spectral::zucconi::zucconi6;
+
+@fragment
+fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
+  let escaped = mandelbrot(uv * 3.0 - vec2f(2.0, 1.5));    
+  let color = zucconi6(escaped);
+
+  return vec4(color, 1.0);
+}
+```
+
+```wgsl
+import super::graphics::mandelbrot;
+import lygia::color::palette::spectral::zucconi::zucconi6;
+
+@fragment
+fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
+  let escaped = mandelbrot(uv * 3.0 - vec2f(2.0, 1.5));    
+
+  @if(debug)
+  let color = escaped;
+  @else
+  let color = zucconi6(escaped);
+
+  return vec4(color, 1.0);
+}
+```
+
+````
+
+<!--
+A peek at some of the extensions in WESL:
+
+starts with WGSL
+
+adds modules so people can split their shaders into separate files
+
+adds packaged library support so people share the modules across organizations
+
+adds conditionals so people can customize shaders at build or runtime
+-->
+
+---
+
 # Why Extend WGSL/WebGPU?
 
 
@@ -179,84 +256,6 @@ For similar reasons we try to chart a neutral path among language influences.
 We can't count on our programmers to be familiar with Rust or TypeScript or C++ or Ocaml or Scala.
 
 Any new features have to pay their weight in new user learning tax.
-
--->
-
----
-
-# WESL Syntax
-
-````md magic-move
-```wgsl
-
-alias Complex = vec2f;
-
-fn mandelbrot(position: Complex) -> f32 { 
-  .
-  .
-}
-
-@fragment
-fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
-  let escaped = mandelbrot(uv * 3.0 - vec2f(2.0, 1.5));    
-  let color = vec3f(escaped);
- 
-  return vec4(color, 1.0);
-}
-```
-```wgsl
-import super::graphics::mandelbrot;
-
-@fragment
-fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
-  let escaped = mandelbrot(uv * 3.0 - vec2f(2.0, 1.5));    
-  let color = vec3f(escaped);
- 
-  return vec4(color, 1.0);
-}
-```
-```wgsl
-import super::graphics::mandelbrot;
-import lygia::color::palette::spectral::zucconi::zucconi6;
-
-@fragment
-fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
-  let escaped = mandelbrot(uv * 3.0 - vec2f(2.0, 1.5));    
-  let color = zucconi6(escaped);
-
-  return vec4(color, 1.0);
-}
-```
-
-```wgsl
-import super::graphics::mandelbrot;
-import lygia::color::palette::spectral::zucconi::zucconi6;
-
-@fragment
-fn main(@location(0) uv: vec2f) -> @location(0) vec4f {
-  let escaped = mandelbrot(uv * 3.0 - vec2f(2.0, 1.5));    
-
-  @if(debug)
-  let color = escaped;
-  @else
-  let color = zucconi6(escaped);
-
-  return vec4(color, 1.0);
-}
-```
-
-````
-
-<!--
-A peek at some of the extensions in WESL:
-
-starts with WGSL
-
-adds modules so people can split their shaders into separate files
-
-adds packaged library support so people share the modules across organizations
-
-adds conditionals so people can customize shaders at build or runtime
 -->
 
 ---
