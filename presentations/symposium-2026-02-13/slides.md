@@ -66,15 +66,22 @@ and the user tooling needs that drive those extensions.
 
 ### Empower a new generation of shader developers
 
-### Integrate GPU programming into modern development
+### Integrate WebGPU programming into modern development
 
 ### Flourishing of GPU apps, big and small
 </div>
 
-
 <!--
-A vision for WebGPU, we think WESL can help.
+A vision for WebGPU, 
+
+we can extend modern shader programming to a broad audience.
+
+we think WESL and the WebGPU tooling it enables can help with that.
+
+If we as a community play our cards right, 
+that can lead to a flourishing of GPU in more places.
 -->
+
 ---
 
 # Why Extend WGSL/WebGPU?
@@ -369,7 +376,7 @@ We a shader front end.
 
 We can rewrite shader source code,
 
-but the underlying vulkan/metal/D3D12 APIs are inaccessible to us. 
+but the underlying vulkan APIs are inaccessible to us. 
 
 So we can try generics in WESL, but not bindless.
 -->
@@ -487,11 +494,11 @@ wgsl-studio - IDE test runner
 <!--
 These are some of the needs we hear about from the community. 
 
-Editor support
+Testing support
 
 Online documentation
 
-Testing support
+Editor support
 -->
 
 ---
@@ -571,6 +578,9 @@ If you're a rust developer, plugging into build.rs should be familiar.
 cli tools are also available for linking too, for users with more custom build setups
 
 And a playground for people who want to view the WESL to WGSL transpilation.
+
+Basically if you want to be able to link modules of WGSL shaders together
+we have an answer for you now.
 
 .. Not just app shaders
 -->
@@ -675,6 +685,12 @@ same sources, published two ways.
 and cargo will just about the same way
 
 in a few days :-)
+
+its the exact same set of shader functions, 
+
+published twice so that they're natively accessible to rust and ts/js communities
+
+it's possible because we're sharing same standard set of extensions
 -->
 
 ---
@@ -699,9 +715,7 @@ Minimize complexity for long-term compatibility
 </div>
 
 <!--
-Zoom in on one issue that's been an ongoing interest for us: 
-
-Enabling Libraries for WebGPU
+Zoom in on the issue of Enabling Libraries for WebGPU
 
 The tools and extensions we've built are now enough to start a library ecosystem for WebGPU.
 
@@ -711,7 +725,6 @@ Prefer to apply those optimizations in apps.
 - Envision applying minification, or AST precompilation, per app, not baking into the library format.
 
 Chose to embed within existing packaging systems, not build a WebGPU specific one.
-
 -->
 
 ---
@@ -841,11 +854,19 @@ VS Code extension for running tests, previewing images
 </div>
 
 <!--
+testing is obviously important for developers
+
+also seems likely to be especially important in the AI coding era
+ 
 Goal: integrate with existing test frameworks and VSCode
 
-Unit testing (something increasingly important in the AI era)
+we now have some fresh new ways to do 
+
+Unit testing
 
 image snapshot testing
+
+on WebGPU
 -->
 
 ---
@@ -932,6 +953,8 @@ but you can imagine for complicated statistical tests or something, you might pr
 <!--
 you can also do image snapshot testing.
 
+runs in CI, no browser required.
+
 It produces a nice little html report on failures.
 
 This is a test from Lygia, looking at a few of the signed distance functions.
@@ -946,7 +969,7 @@ This is a test from Lygia, looking at a few of the signed distance functions.
 <!--
 We've a new vscode extension available called wgsl-studio.
 
-It uses the wgsl-test core (and the Dawn webgpu engine) to support a test runner in the browser.
+It uses the wgsl-test core (and the Dawn webgpu engine) to support a test runner in VsCode.
 
 On the left you can see that the 'test explorer' shows both vitest tests and native tests.
 
@@ -1309,37 +1332,11 @@ especially if our tooling proves useful...
 
 Perhaps our tools can help for other 
 projects that target WebGPU.
+
+And if you're developing tools
+consider joining us in supporting these common extensions.
 -->
 
----
-
-# Extension Language Roles
-
-<div class="mt-8 space-y-6">
-
-### Elm
-A respected niche language in a divergent direction
-
-### TypeScript
-Transpiling becomes a permanent part of the ecosystem
-
-### Scala
-Pioneer features that often migrate to the base language
-
-<v-click>
-
-### WESL
-We'll see!
-
-</v-click>
-
-</div>
-
-<!--
-We think WESL and its tooling can be an ongoing help for the WebGPU community. 
-
-What role WESL will play is uncertain..
--->
 
 ---
 
@@ -1398,3 +1395,31 @@ layout: center
 ---
 
 # Extras
+
+---
+
+# Extension Language Roles
+
+<div class="mt-8 space-y-6">
+
+### Elm
+A respected niche language in a divergent direction
+
+### TypeScript
+Transpiling becomes a permanent part of the ecosystem
+
+### Scala
+Pioneer features that often migrate to the base language
+
+<v-click>
+
+### WESL
+We'll see!
+
+</v-click>
+
+</div>
+
+<!--
+We think WESL and its tooling can be an ongoing help for the WebGPU community.
+-->
