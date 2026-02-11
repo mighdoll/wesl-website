@@ -1269,41 +1269,49 @@ flowchart LR
 </div>
 
 <!--
-Pooling user requested extensions lets us make *shared tooling* to benefit many projects.
 
-And tools themselves create new needs from the shader language. 
+User Tool requests led us to make shader Extensions 
+
+sharing extensions between enables shared tools 
+
+let's us make useful user features 
 
 A virtuous cycle.
 -->
 ---
 
-# WESL for other Shader Languages?
+# Targeting WebGPU? 
 
-<div>
+### Maybe our tools can help
 
-### Lowest common denominator for WebGPU reuse:
+<div class="mt-4 ml-6 mb-4">
+testing, library packaging, web publishing.
+
+tools work for WGSL and WESL
+
+let us know what you need!
+</div>
+
+
+### Consider WESL extensions
+
 <div class="mt-4 ml-6">
+lowest common denominator for WebGPU reusability
+
 WGSL + modules
 
-basic conditional compilation
+source maps into library format..
 </div>
 
-### Define stable subset of WESL as target format?
-<div class="mt-4 ml-6">
-npm/cargo packaging for libraries
 
-reuse the tool ecosystem 
-</div>
-
-</div>
 
 <!--
 As WebGPU grows in popularity, and 
 especially if our tooling proves useful...
 
-It might be helpful to define a stable subset of WESL for other languages to target. Arguably what you want is wgsl+modules and conditions.
+Perhaps our tools can help for other 
+tools and languages that target WebGPU.
 
-After all, if you want to target WebGPU, you'll likely face the same ecosystem tooling integration issues that led us down this path.
 -->
 
 ---
