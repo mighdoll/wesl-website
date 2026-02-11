@@ -1355,6 +1355,11 @@ layout: center
 
 [WESL discord](http://discord.gg/Ty7MjWVfvh)
 
+[wgsl-test](https://www.npmjs.com/package/wgsl-test) 
+[wgsl-play](https://www.npmjs.com/package/wgsl-play) 
+[wgsl-edit](https://www.npmjs.com/package/wgsl-edit)
+[wgsl-studio](https://marketplace.visualstudio.com/items?itemName=webgpu-tools.wgsl-studio)
+
 </div>
 
 ---
