@@ -33,7 +33,10 @@ Stefan Brandmair
 
 Mathis Brossier (in spirit)
 
+<br/>
 </div>
+
+[https://bit.ly/wesl-2026](https://bit.ly/wesl-2026)
 
 <div class="absolute bottom-2 right-4 text-sm             
 text-gray-400">                                           
