@@ -47,7 +47,7 @@ February 2026
 </div>
 
 <!--
-We're going to talk about our extensions to WebGPU's WGSL
+We're going to talk about our extensions to WebGPU's shader language
 
 and the user tooling needs that drive those extensions.
 -->
@@ -68,8 +68,8 @@ and the user tooling needs that drive those extensions.
 <!--
 WebGPU can extend modern shader programming to a broad audience.
 
-We think WESL, and particularly the WebGPU tooling enabled by WESL, can help.
-We can help by building useful tools that 'complete' the developer experience.
+We think WESL, and particularly the WebGPU tooling enabled by WESL, can help to
+'complete' the developer experience.
 -->
 
 ---
@@ -147,6 +147,8 @@ adds modules so people can split their shaders into separate files
 adds packaged library support so people share the modules across organizations
 
 adds conditionals so people can customize shaders at build or runtime
+
+starts from WGSL and adds extensions that should feel natural
 -->
 
 ---
@@ -817,8 +819,12 @@ VS Code extension for running tests, previewing images
 testing is obviously important for developers
 
 also seems likely to be especially important in the AI coding era
+tests help keep our agents on track
  
-Goal: integrate with developer workflows, ci friendly testing in general, existing test frameworks, VSCode
+Goal: integrate with developer workflows, 
+ci friendly testing in general, 
+existing test frameworks, 
+VSCode
 
 We now have some fresh new ways to do:
 
@@ -918,6 +924,8 @@ runs in CI, no browser required.
 It produces a nice little html report on failures.
 
 This is a test from Lygia, looking at a few of the signed distance functions.
+
+...so that's command line tooling.
 -->
 
 ---
@@ -1145,8 +1153,6 @@ tabbed interface
 
 inline errors
 
-again just a couple of lines to drop onto your web page and you can have a wgsl editor.
-
 and it interoperates with wgsl-play
 -->
 
@@ -1252,9 +1258,9 @@ flowchart LR
 </div>
 
 <!--
-User Tool requests led us to make shader Extensions 
+tool needs led us to make shader Extensions 
 
-sharing extensions enables shared tools 
+coming together as a group to share extensions enables shared tools 
 
 Feel like we're in a nice spot right now.
 
@@ -1287,8 +1293,7 @@ source maps into library format..
 </div>
 
 <!--
-As WebGPU grows in popularity, and 
-especially if our tooling proves useful...
+As WebGPU grows in popularity
 
 Perhaps our tools can help for other 
 projects that target WebGPU.
@@ -1296,7 +1301,6 @@ projects that target WebGPU.
 And if you're developing tools
 consider joining us in supporting these common extensions.
 -->
-
 
 ---
 
