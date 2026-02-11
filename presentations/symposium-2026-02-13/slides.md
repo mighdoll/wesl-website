@@ -12,17 +12,6 @@ transition: none
 
 <!--
 TODO:
-- add urls for wgsl-test, wgsl-studio, wgsl-analyzer, 
-- add url to presentation
-
-- runnable example for mandelbrot
-- IDE demo
-- wgsl-play demo
-- wgsl-studio demo
-
-- jannik's doc generator. 
-- static screen shots as demo placeholders
-
 - extra slides for upcoming wgsl features 
   - [might be nice to get feedback on these outside/after the talk]
   - param const
@@ -72,14 +61,10 @@ and the user tooling needs that drive those extensions.
 </div>
 
 <!--
-A vision for WebGPU, 
+WebGPU can extend modern shader programming to a broad audience.
 
-we can extend modern shader programming to a broad audience.
-
-we think WESL and the WebGPU tooling it enables can help with that.
-
-If we as a community play our cards right, 
-that can lead to a flourishing of GPU in more places.
+We think WESL, and particularly the WebGPU tooling enabled by WESL, can help.
+We can help by building useful tools that 'complete' the developer experience.
 -->
 
 ---
@@ -116,70 +101,50 @@ Shader library packaging formats
 <!--
 We actually started down this because we were trying to fill some community needs for WebGPU tooling.
 
-We discovered that we really wanted some language extension features to support tooling.
-
-That's where we started. Basically trying to write #include but better.
+We started trying to write #include but better. 
+We needed the infrastructure of a programming language, parsing, identifer binding references to declarations, etc.
 
 As we got going, we realized that:
 
 Extending the language outside the browser core makes sense for two reasons:
-- it's easier to iterate: open source tools vs. multiple browsers.
+- it's easier to iterate: open source tools vs. multiple browsers
 - some features may never need to go into the browser core.
--->
-
----
-
-# Support for WGSL/WebGPU
-
-<div class="mt-8 space-y-6">
-
-### WESL language features designed as potential WGSL features
-
-### Collaborate on language experiments
-
-### Support core WGSL/WebGPU development
-
-</div>
-
-<!--
-We try to work closely with the WebGPU committee. 
-
-WESL extensions are designed to be possible future browser implementation.
-
-Our work is a support, not a substitute for WebGPU/WGSL.
 -->
 
 ---
 
 # WESL Language Aims
 
-
-### Practical
+### Practical support for the WebGPU ecosystem
 
 Always driven by community needs
 
-### Strict Superset of WGSL
+### Support core WGSL/WebGPU development
+
+Work closely with WebGPU commmittee
+
+### WESL extensions are potential future WGSL features
 
 <div class="ml-6 mt-4">
-WGSL is WESL
+Strict superset of WGSL
 
 WebGPU Conformance Test Suite (CTS)
-
 </div>
 
-### Support WebGPU Ecosystem
+### Tools support WGSL and WESL
 
 <!--
-We drive language design from use cases from community shaders 
-- and of course from tool development.
+We drive language design from use cases from community shaders and tools
+
+Support, don't substitute for WebGPU/WGSL.
 
 We want to help grow the ecosystem, not create a splinter language.
 
+In fact, WESL extensions are designed to be possible future browser implementation.
+
 We maintain and test for strict upward compatibility with WGSL. Our tools run the same compatibility test suite as the browsers.
 
-WGSL is WESL. 
-
-All our tools support vanilla WGSL plus a sprinkling of extra features.
+All our tools support both vanilla WGSL plus extensions.
 -->
 
 ---
@@ -193,7 +158,7 @@ All our tools support vanilla WGSL plus a sprinkling of extra features.
 </div>
 
 <!--
-A thought on how we think about the **design center** for WebGPU/WGSL/WESL.
+We're trying to be judicious about adding power features into the language.
 
 Those of us working on the project aspire to become knowldedgable about language and gpu features..
 
@@ -203,15 +168,13 @@ But we expect that as WebGPU proliferates, there'll be a lot of small projects.
 Lots of part time shader programmers. 
 So there's a premium on **simplicity**.
 
-So we're trying to be judicious about adding power features.
+Every new feature is a 'tax' on new users. 
 
-Every new feature is a 'tax' on new users. And typically, the web is frothy, lots of new users all the time.
+For similar reasons we try to chart a neutral path among language influences. 
+We can't count on our programmers to be familiar with Rust or TypeScript or C++ or Ocaml or Scala.
 
-Also, we try to chart a neutral path among language influences. 
+Any new features have to pay their weight in new user learning tax.
 
-In particular, we don't assume that users already are already familiar with idioms from Rust or TypeScript or C++. 
-
-And we aware that any ideas we're tempted to bring from languages like ocaml or scala have to pay their weight in new user learning tax.
 -->
 
 ---
