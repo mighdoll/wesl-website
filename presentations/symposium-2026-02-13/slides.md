@@ -184,11 +184,11 @@ Shader library packaging formats
 We actually started down this because we were trying to fill some community needs for WebGPU tooling.
 
 We started trying to write #include but better. 
-We needed the infrastructure of a programming language, parsing, identifer binding references to declarations, etc.
+We needed the infrastructure parsing, identifer binding references to declarations, etc.
+Essentially we built the front end infrastructure of a programming language
 
-As we got going, we realized that:
+We realized that it makes sense to develop some language features outside the browser core.
 
-Extending the language outside the browser core makes sense for two reasons:
 - it's easier to iterate: open source tools vs. multiple browsers
 - some features may never need to go into the browser core.
 -->
@@ -216,7 +216,7 @@ WebGPU Conformance Test Suite (CTS)
 ### Tools support WGSL and WESL
 
 <!--
-We drive language design from use cases from community shaders and tools
+We drive language design from use cases, from community shaders and tool needs
 
 Support, don't substitute for WebGPU/WGSL.
 
@@ -242,15 +242,13 @@ All our tools support both vanilla WGSL plus extensions.
 <!--
 We're trying to be judicious about adding power features into the language.
 
-Those of us working on the project aspire to become knowldedgable about language and gpu features..
-
-and some set of our users too really want power features.
+Those of us working on the project aspire to become experts on programming languages and gpu shaders...
 
 But we expect that as WebGPU proliferates, there'll be a lot of small projects.
 Lots of part time shader programmers. 
 So there's a premium on **simplicity**.
 
-Every new feature is a 'tax' on new users. 
+Every new feature we add is a 'tax' on new users. 
 
 For similar reasons we try to chart a neutral path among language influences. 
 We can't count on our programmers to be familiar with Rust or TypeScript or C++ or Ocaml or Scala.
@@ -269,13 +267,7 @@ Import, conditional compilation
 Libraries of shader functions
 
 <!--
-Core feature set in our first release last year:
-
-robust module system
-
-conditional compilation
-
-npm/cargo library support
+Glimpsed earlier some of the features we have today
 -->
 
 ---
@@ -301,7 +293,9 @@ Reflection
 <br/>
 
 <!--
-There are a number of language features under way. Wildcards, visibility.
+There are a number of language features under way. Some perhaps not all are coming this year.
+
+Wildcards, visibility.
 
 More attention on the shader/host interface in general.
 
@@ -354,6 +348,10 @@ layout: center
 
 # Tools
 
+<!--
+Now let's start talking the tools that are perhaps the main driver of shader language extensions
+-->
+
 ---
 
 # WESL Enables WebGPU Tooling
@@ -387,14 +385,9 @@ flowchart LR
 </div>
 
 <!--
-As mentioned, our goal has always been to enable WebGPU tools, 
-not just language enhancements.
+We'll show a peek the linking and packaging tools we started work on first.
 
-We started with linking and packaging tools.
-
-A lot more is coming on the tools front. 
-
-We'll show snapshots of those tools next.
+And then show snapshots of some fresh new tools that are coming out now.
 -->
 
 ---
@@ -825,13 +818,13 @@ testing is obviously important for developers
 
 also seems likely to be especially important in the AI coding era
  
-Goal: integrate with existing test frameworks and VSCode
+Goal: integrate with developer workflows, ci friendly testing in general, existing test frameworks, VSCode
 
-we now have some fresh new ways to do 
+We now have some fresh new ways to do:
 
-Unit testing
+- Unit testing
 
-image snapshot testing
+- image snapshot testing
 
 on WebGPU
 -->
@@ -867,15 +860,15 @@ Tests run in Node (Dawn) or Deno (wgpu)
 </div>
 
 <!--
-We want to write tests in shader code
+wgsl-test: headless unit and visual regression tests
 
-that's how shader functions are meant to be called
+We want to write unit tests in shader code
+- that's how shader functions are meant to be called
 
-Validate (expect functions) in shader code where that's easy.
-Add more shader validators over time
-enables more tests to be described fully in shader code.
-
-The tests can run using Google's Dawn or Mozilla's implementation of WebGPU
+And we can also put validation (expect functions) in shader code where that's easy.
+That enables tests to be described fully in shader code, 
+shader tests run cross platform from the cli.
+just like other developers are used to with their existing unit test frameworks
 -->
 
 ---
@@ -934,7 +927,7 @@ This is a test from Lygia, looking at a few of the signed distance functions.
 <img src="/wgsl_studio_unit_test.png" alt="vscode wgsl-studio unit tests" class="h-100" />
 
 <!--
-We've a new vscode extension available called wgsl-studio.
+Partly to support testing, we've a new vscode extension available called wgsl-studio.
 
 It uses the wgsl-test core (and the Dawn webgpu engine) to support a test runner in VsCode.
 
@@ -959,7 +952,7 @@ We're setup to do that now, it's a good place to be.
 <img src="/wgsl_studio_preview.png" alt="vscode wgsl-studio preview shaders" class="h-100" />
 
 <!--
-Image Snapshot tests are visible in wgsl-studio. 
+Image Snapshot shaders are also viewable in wgsl-studio. 
 
 here the user has right clicked 'show preview'
 
