@@ -24,7 +24,6 @@ TODO:
 
 A Pioneer Language for WebGPU
 
-
 <div class="mt-12">
 
 Lee Mighdoll
@@ -37,6 +36,8 @@ Mathis Brossier (in spirit)
 </div>
 
 [https://bit.ly/wesl-2026](https://bit.ly/wesl-2026)
+
+<img src="/qr-bitly-wesl-2026.png" alt="Power Features" class="h-100" />
 
 <div class="absolute bottom-2 right-4 text-sm             
 text-gray-400">                                           
