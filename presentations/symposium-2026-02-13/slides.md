@@ -35,9 +35,10 @@ Mathis Brossier (in spirit)
 <br/>
 </div>
 
-[https://bit.ly/wesl-2026](https://bit.ly/wesl-2026)
-
-<img src="/qr-bitly-wesl-2026.png" alt="QR Code" class="absolute right-12 top-50 h-[20vh] w-[20vh] object-contain" />
+<div class="absolute right-12 top-20 flex flex-col items-center">
+<img src="/qr-bitly-wesl-2026.png" alt="QR Code" class="h-[20vh] w-[20vh] object-contain" />
+<a href="https://bit.ly/wesl-2026" class="text-sm mt-1">https://bit.ly/wesl-2026</a>
+</div>
 
 <div class="absolute bottom-2 right-4 text-sm             
 text-gray-400">                                           
