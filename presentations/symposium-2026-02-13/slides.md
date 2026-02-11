@@ -1355,10 +1355,16 @@ layout: center
 
 [WESL discord](http://discord.gg/Ty7MjWVfvh)
 
-[wgsl-test](https://www.npmjs.com/package/wgsl-test) 
-[wgsl-play](https://www.npmjs.com/package/wgsl-play) 
-[wgsl-edit](https://www.npmjs.com/package/wgsl-edit)
-[wgsl-studio](https://marketplace.visualstudio.com/items?itemName=webgpu-tools.wgsl-studio)
+<div class="flex gap-8 mt-8">
+<a href="https://crates.io/crates/wesl">wesl-rs</a>
+<a href="https://www.npmjs.com/package/wesl-js">wesl-js</a>
+<a href="https://www.npmjs.com/package/wgsl-test">wgsl-test</a>
+<a href="https://www.npmjs.com/package/wgsl-play">wgsl-play</a>
+<a href="https://www.npmjs.com/package/wgsl-edit">wgsl-edit</a>
+<a href="https://marketplace.visualstudio.com/items?itemName=webgpu-tools.wgsl-studio">wgsl-studio</a>
+<a href="https://www.npmjs.com/package/lygia">lygia</a>
+</div>
+
 
 </div>
 
