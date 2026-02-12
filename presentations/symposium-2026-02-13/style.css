@@ -9,6 +9,12 @@
   --accent-orange: #ea580c;
 }
 
+.dark {
+  --bg: #1a1a2e;
+  --fg: #e0e0e0;
+  --border: #444;
+}
+
 /* Light off-white background */
 .slidev-layout {
   background: var(--bg);
@@ -82,6 +88,11 @@ a:hover {
   padding: 0.15em 0.4em;
   border-radius: 3px;
   font-size: 0.9em;
+}
+
+.dark :not(pre) > code {
+  background: #2a2a3e;
+  color: #ccc;
 }
 
 /* Bold emphasis */
