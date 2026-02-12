@@ -824,8 +824,8 @@ also seems likely to be especially important in the AI coding era
 tests help keep our agents on track
  
 Goal: integrate with developer workflows, 
-- ci friendly testing in general, 
-- existing test frameworks, 
+- continuous integration friendly testing 
+- integrate w/ existing test frameworks where appropriate
 - VSCode
 
 We now have some fresh new ways to do:
@@ -876,12 +876,11 @@ We want to write unit tests in shader code
 Can also put validation (expect functions) in shader code
 (Next slide shows an atlernate approach)
 
-It's nice to do everything in shader code test & validation where feasible.
+Where feasible, it's nice to do 
+everything in shader code: 
 
-That enables tests to be described fully in shader code, 
+setup, test & validation 
 
-shader tests run cross platform from the cli.
-just like other developers are used to with their existing unit test frameworks
 -->
 
 ---
