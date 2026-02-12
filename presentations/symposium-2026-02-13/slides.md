@@ -1268,8 +1268,8 @@ typechecking other code still works even w/o errors
 # Formatting
 
 <div class="relative h-80 mt-8 overflow-hidden">
-  <img v-click-hide src="/unformatted.png" alt="Unformatted" class="absolute top-0 w-full" style="left: -15px" />
-  <img v-after src="/formatted.png" alt="Formatted" class="absolute top-0 left-0 w-full" />
+  <img v-click-hide src="/unformatted.png" alt="Unformatted" class="absolute top-0 left-0" style="object-fit: none; object-position: top left" />
+  <img v-after src="/formatted.png" alt="Formatted" class="absolute top-0 left-0" style="object-fit: none; object-position: top left" />
 </div>
 
 <!--
