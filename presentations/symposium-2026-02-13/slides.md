@@ -819,12 +819,13 @@ VS Code extension for running tests, previewing images
 testing is obviously important for developers
 
 also seems likely to be especially important in the AI coding era
+
 tests help keep our agents on track
  
 Goal: integrate with developer workflows, 
-ci friendly testing in general, 
-existing test frameworks, 
-VSCode
+- ci friendly testing in general, 
+- existing test frameworks, 
+- VSCode
 
 We now have some fresh new ways to do:
 
@@ -970,14 +971,6 @@ Remember the test case from a few slides ago.
 This is the same code.
 
 You can preview shaders even if they're not tests.
-
-We're aiming for annotations you put on shaders to make them runnable as tests.
-
-Adding annotations to shaders to make shaders runnable is pretty much what you need for shader previews too.
-
-that'll be interesting future work this year.
-
-your thoughts welcome on test and shadertoy style interfaces!
 -->
 
 ---
@@ -1102,6 +1095,13 @@ in this example we're using the wesl-plugin's ?link
 That automatically loads all the dependencies from draw-shapes.wesl
 
 It's handy to have language extension for shader module composition that's aware of libraries
+
+
+We're intending to add declarative annotations to enable less simple shaders to run in wgsl-play
+
+Those annotations are pretty similar to annotations needed to make runnable shader tests.
+
+your thoughts on declarative test and shadertoy style interfaces are welcome!
 -->
 
 ---
@@ -1179,11 +1179,15 @@ onMounted(() => {
 <!--
 editor and player linked: edit code, see live output
 
-[edit vec4f to vec3f]
+[press play]
+
 see errors from Dawn
 
-[rm comma after purple]
+[edit vec4f to vec3f]
+
 see errors from the WESL transpiler
+
+[rm comma after purple]
 
 It's all web based.. so we can do things like
 load new packages straight from npm on demand.
