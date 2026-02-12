@@ -873,14 +873,13 @@ wgsl-test: headless unit and visual regression tests from the cli
 We want to write unit tests in shader code
 - that's how shader functions are meant to be called
 
-Can also put validation (expect functions) in shader code
-(Next slide shows an atlernate approach)
+Can also put validation [expect functions] in shader code
+(Next slide shows an alternate approach)
 
-Where feasible, it's nice to do 
+Where feasible, it's nice to **declare** 
 everything in shader code: 
 
-setup, test & validation 
-
+setup, test & validation
 -->
 
 ---
@@ -912,8 +911,7 @@ Handy for complicated validation / setup
 here's a simple example of running the same kind of test and returning the result back to
 to run validation in TypeScript.
 
-In this simple example there's no need,
-but you can imagine for complicated statistical tests or something, you might prefer to write the validation in host code.
+you can imagine for complicated *statistical* tests or something, you might prefer to write the validation in host code.
 -->
 
 ---
@@ -941,7 +939,7 @@ This is a test from Lygia, looking at a few of the signed distance functions.
 <img src="/wgsl_studio_unit_test.png" alt="vscode wgsl-studio unit tests" class="h-100" />
 
 <!--
-Partly to support testing, we've a new vscode extension available called wgsl-studio.
+For **vscode** we've a new vscode extension available called **wgsl-studio**.
 
 It uses the wgsl-test core (and the Dawn webgpu engine) to support a test runner in VsCode.
 
@@ -950,7 +948,7 @@ On the left you can see that the 'test explorer' shows both vitest tests and nat
 On the right you can see errors reported along with the failing function.
 
 As an aside on design here..
-The astute observer might notice that the error is reported at the function, not the 'expect' call that's failing.
+The **astute observer** might notice that the error is reported at the function, not the 'expect' call that's failing.
 
 This is an example of how tool needs can drive the design for language extensions. 
 - users want a tool to run tests in their dev environment
