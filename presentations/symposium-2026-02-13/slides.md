@@ -1238,6 +1238,12 @@ TBD
 ---
 
 # Syntax highlighting
+Programming, now in color
+
+<div class="relative mt-4 overflow-hidden" style="height: 420px;">
+  <img v-click-hide src="/unhighlighted.png" alt="Unhighlighted" class="absolute top-0" style="left: -4px; top: -17px; object-fit: none; object-position: top left" />
+  <img v-after src="/syntax_highlighted.png" alt="Syntax highlighted" class="absolute top-0 left-0" style="object-fit: none; object-position: top left" />
+</div>
 
 <!--
 Programming is prettier when you have colors.
