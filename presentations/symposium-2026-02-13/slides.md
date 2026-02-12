@@ -868,13 +868,18 @@ Tests run in Node (Dawn) or Deno (wgpu)
 </div>
 
 <!--
-wgsl-test: headless unit and visual regression tests
+wgsl-test: headless unit and visual regression tests from the cli
 
 We want to write unit tests in shader code
 - that's how shader functions are meant to be called
 
-And we can also put validation (expect functions) in shader code where that's easy.
+Can also put validation (expect functions) in shader code
+(Next slide shows an atlernate approach)
+
+It's nice to do everything in shader code test & validation where feasible.
+
 That enables tests to be described fully in shader code, 
+
 shader tests run cross platform from the cli.
 just like other developers are used to with their existing unit test frameworks
 -->
@@ -1261,6 +1266,14 @@ typechecking other code still works even w/o errors
 ---
 
 # Formatting
+
+<v-click at="0">
+<img src="/unformatted.png" alt="Power Features" class="h-80 mx-auto mt-8" />
+</v-click>
+
+<v-click at="1">
+<img src="/formatted.png" alt="Power Features" class="h-80 mx-auto mt-8" />
+</v-click>
 
 <!--
 code formatter coming soon too.
