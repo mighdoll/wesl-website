@@ -1268,7 +1268,7 @@ typechecking other code still works even w/o errors
 # Formatting
 
 <div class="relative mt-4 overflow-hidden" style="height: 420px;">
-  <img v-click-hide src="/unformatted.png" alt="Unformatted" class="absolute top-0 left-0" style="object-fit: none; object-position: top left" />
+  <img v-click-hide src="/unformatted.png" alt="Unformatted" class="absolute top-0" style="left: -11px; top: -2px; object-fit: none; object-position: top left" />
   <img v-after src="/formatted.png" alt="Formatted" class="absolute top-0 left-0" style="object-fit: none; object-position: top left" />
 </div>
 
