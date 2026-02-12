@@ -1260,8 +1260,8 @@ naturally, works across modules, libraries
 # Error Robustness
 Resilient parser to report multiple errors 
 
-<div class="flex justify-center items-center mt-8 flex-1 overflow-hidden">
-<img src="/lang-server-errors.png" alt="Formatted" style="max-width: 80%; max-height: 80%; object-fit: contain" />
+<div class="flex items-start mt-8 flex-1 overflow-hidden">
+<img src="/lang-server-errors.png" alt="Formatted" style="max-width: 95%; max-height: 95%; object-fit: contain" />
 </div>
 
 <!-- 
