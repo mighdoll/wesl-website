@@ -1246,6 +1246,12 @@ Programming is prettier when you have colors.
 ---
 
 # Autocomplete
+Semantic aware code suggestions
+
+
+<div class="flex items-start mt-8 flex-1 overflow-hidden">
+<img src="/tab-complete.png" alt="Formatted" style="max-width: 95%; max-height: 95%; object-fit: contain" />
+</div>
 
 <!-- 
 typical features works like you'd imagine
