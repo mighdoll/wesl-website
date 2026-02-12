@@ -387,9 +387,9 @@ flowchart LR
 </div>
 
 <!--
-We'll show a peek the linking and packaging tools we started work on first.
+We built linking and packaging tools first.
 
-And then show snapshots of some fresh new tools that are coming out now.
+And there's some fresh new tools that are coming out now.
 -->
 
 ---
@@ -1089,6 +1089,8 @@ wgsl-play is a convenient way to put simple shaders on a web page
 note that this is the same code as the image snapshot tests,
 so regression tests can do double duty as demos.
 
+[press play]
+
 this is the component used inside the vscode extension too.
 
 you can put the shader code inline in the html
@@ -1151,7 +1153,7 @@ uses codemirror under the hood, easy to embed even on mobile
 
 tabbed interface
 
-inline errors
+[click tabs, dbl click to rename, + to add new]
 
 and it interoperates with wgsl-play
 -->
@@ -1199,24 +1201,66 @@ That's the notification as the web page loads from npm.
 
 ---
 
-
 # wgsl-analyzer
 
 <div class="mt-8 space-y-6">
 
-### Language Server for WGSL/WESL
+### Language server for WGSL/WESL
 
-- Syntax highlighting
-- Error diagnostics
-- Go to definition
-- Autocomplete
-- Hover information
-- Formatter
+<div class="ml-6">
+
+VSCode
+
+Emacs / neovim / etc.
+
+</div>
+
+### Incremental and error resilient
+
+based on production rust-analyzer
 
 </div>
 
 <!--
 TBD
+-->
+
+---
+
+# Syntax highlighting
+
+<!--
+Programming is prettier when you have colors.
+-->
+
+---
+
+# Autocomplete
+
+<!-- 
+typical features works like you'd imagine
+
+go to definition
+
+naturally, works across modules, libraries
+
+-->
+---
+
+# Error Robustness
+
+<!-- 
+typechecking other code still works even w/o errors
+-->
+
+---
+
+# Formatting
+
+<!--
+code formatter coming soon too.
+
+in larger teams, you want a consistent shader code base
 -->
 
 ---
