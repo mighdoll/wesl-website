@@ -155,6 +155,14 @@ starts from WGSL and adds extensions that should feel natural
 
 # Why Extend WGSL/WebGPU?
 
+### WESL extensions are potential future WGSL features
+
+<div class="ml-6 mt-4">
+Strict superset of WGSL
+
+WebGPU Conformance Test Suite (CTS)
+</div>
+
 
 ### Pioneer new features with low risk
 
@@ -189,8 +197,11 @@ We started trying to write #include but better.
 We needed the infrastructure parsing, identifer binding references to declarations, etc.
 Essentially we built the front end infrastructure of a programming language
 
-We realized that it makes sense to develop some language features outside the browser core.
+WESL extensions are designed to be possible future browser implementation.
 
+We maintain and test for strict upward compatibility with WGSL. Our tools run the same compatibility test suite as the browsers.
+
+It makes sense to develop some language features outside the browser core.
 - it's easier to iterate: open source tools vs. multiple browsers
 - some features may never need to go into the browser core.
 -->
@@ -207,14 +218,6 @@ Always driven by community needs
 
 Work closely with WebGPU commmittee
 
-### WESL extensions are potential future WGSL features
-
-<div class="ml-6 mt-4">
-Strict superset of WGSL
-
-WebGPU Conformance Test Suite (CTS)
-</div>
-
 ### Tools support WGSL and WESL
 
 <!--
@@ -223,10 +226,6 @@ We drive language design from use cases, from community shaders and tool needs
 Support, don't substitute for WebGPU/WGSL.
 
 We want to help grow the ecosystem, not create a splinter language.
-
-In fact, WESL extensions are designed to be possible future browser implementation.
-
-We maintain and test for strict upward compatibility with WGSL. Our tools run the same compatibility test suite as the browsers.
 
 All our tools support both vanilla WGSL plus extensions.
 -->
@@ -247,15 +246,16 @@ We're trying to be judicious about adding power features into the language.
 Those of us working on the project aspire to become experts on programming languages and gpu shaders...
 
 But we expect that as WebGPU proliferates, there'll be a lot of small projects.
-Lots of part time shader programmers. 
 So there's a premium on **simplicity**.
+
+Lots of part time shader programmers. 
 
 Every new feature we add is a 'tax' on new users. 
 
+Any new features have to pay their weight in new user learning tax.
+
 For similar reasons we try to chart a neutral path among language influences. 
 We can't count on our programmers to be familiar with Rust or TypeScript or C++ or Ocaml or Scala.
-
-Any new features have to pay their weight in new user learning tax.
 -->
 
 ---
@@ -529,6 +529,7 @@ Our goal:
 very few lines of code to add WESL to a WebGPU project
 
 Meet developers where they are.
+
 Plugin the tools/workflow they already use.
 
 So significant effort towards making e.g. JavaScript/TypeScript bundler plugins.
