@@ -1267,13 +1267,10 @@ typechecking other code still works even w/o errors
 
 # Formatting
 
-<v-click at="0">
-<img src="/unformatted.png" alt="Power Features" class="h-80 mx-auto mt-8" />
-</v-click>
-
-<v-click at="1">
-<img src="/formatted.png" alt="Power Features" class="h-80 mx-auto mt-8" />
-</v-click>
+<div class="relative h-80 mt-8">
+  <img v-click-hide src="/unformatted.png" alt="Unformatted" class="absolute h-full left-1/2 -translate-x-1/2" />
+  <img v-after src="/formatted.png" alt="Formatted" class="absolute h-full left-1/2 -translate-x-1/2" />
+</div>
 
 <!--
 code formatter coming soon too.
