@@ -1240,9 +1240,11 @@ TBD
 # Syntax highlighting
 Programming, now in color
 
-<div class="relative mt-4 overflow-hidden" style="height: 420px;">
-  <img v-click-hide src="/unhighlighted.png" alt="Unhighlighted" class="absolute top-0" style="left: -4px; top: -17px; object-fit: none; object-position: top left" />
-  <img v-after src="/syntax_highlighted.png" alt="Syntax highlighted" class="absolute top-0 left-0" style="object-fit: none; object-position: top left" />
+<div class="relative mt-4 overflow-hidden" style="height: 320px;">
+  <div class="relative" style="width: 1200px; height: 500px; transform: scale(0.8); transform-origin: top left;">
+    <img v-click-hide src="/unhighlighted.png" alt="Unhighlighted" class="absolute top-0" style="left: -4px; top: -17px; object-fit: none; object-position: top left" />
+    <img v-after src="/syntax_highlighted.png" alt="Syntax highlighted" class="absolute top-0 left-0" style="object-fit: none; object-position: top left" />
+  </div>
 </div>
 
 <!--
