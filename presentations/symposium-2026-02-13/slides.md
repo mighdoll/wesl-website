@@ -1259,6 +1259,10 @@ naturally, works across modules, libraries
 
 # Error Robustness
 
+<div class="relative mt-4 overflow-hidden">
+<img src="/lang-server-errors.png" alt="Formatted" class="absolute top-0 left-0" style="object-fit: none; object-position: top left" />
+</div>
+
 <!-- 
 typechecking other code still works even w/o errors
 -->
