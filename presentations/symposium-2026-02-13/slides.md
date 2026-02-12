@@ -1267,9 +1267,9 @@ typechecking other code still works even w/o errors
 
 # Formatting
 
-<div class="relative h-80 mt-8">
-  <img v-click-hide src="/unformatted.png" alt="Unformatted" class="absolute h-full left-1/2 -translate-x-1/2" />
-  <img v-after src="/formatted.png" alt="Formatted" class="absolute h-full left-1/2 -translate-x-1/2" />
+<div class="relative h-80 mt-8 overflow-hidden">
+  <img v-click-hide src="/unformatted.png" alt="Unformatted" class="absolute top-0 left-0 w-full" />
+  <img v-after src="/formatted.png" alt="Formatted" class="absolute top-0 left-0 w-full" />
 </div>
 
 <!--
