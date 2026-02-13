@@ -142,13 +142,13 @@ A peek at some of the extensions in WESL:
 
 starts with WGSL
 
-adds modules so people can split their shaders into separate files
+adds **modules** so people can split their shaders into separate files
 
-adds packaged library support so people share the modules across organizations
+adds **packaged library** support so people share the modules across organizations
 
-adds conditionals so people can customize shaders at build or runtime
+adds **conditionals** so people can customize shaders at build or runtime
 
-starts from WGSL and adds extensions that should feel natural
+starts from WGSL and adds **extensions feel natural**
 -->
 
 ---
@@ -191,7 +191,7 @@ Shader library packaging formats
 </div>
 
 <!--
-We **started** this because we were trying to fill some community needs for WebGPU **tooling** and ended up **extending the shader language** itself.
+We **started** this because we were trying to fill some community needs for WebGPU **tooling** and ended up **extending** the shader language itself.
 
 WESL extensions are designed to be possible **future browser implementation**.
 
@@ -217,11 +217,11 @@ Work closely with WebGPU commmittee
 ### Tools support WGSL and WESL
 
 <!--
-We drive language design from use cases, from community shaders and tool needs
+We drive language design from **use cases**, from community shaders and tool needs
 
-Support, don't substitute for WebGPU/WGSL.
+Support, **not a substitute** for WebGPU/WGSL.
 
-We want to help grow the ecosystem, not create a splinter language.
+We want to help grow the ecosystem, not create a **splinter language**.
 
 All our tools support both vanilla WGSL plus extensions.
 -->
@@ -237,20 +237,17 @@ All our tools support both vanilla WGSL plus extensions.
 </div>
 
 <!--
-We're trying to be judicious about adding power features into the language.
+We expect that as WebGPU proliferates, there'll be a lot of small projects.
 
-Those of us working on the project aspire to become experts on programming languages and gpu shaders...
+Lots of **part time shader programmers**. 
 
-But we expect that as WebGPU proliferates, there'll be a lot of small projects.
 So there's a premium on **simplicity**.
 
-Lots of part time shader programmers. 
-
-Every new feature we add is a 'tax' on new users. 
+Every **new feature** we add is a 'tax' on new users. 
 
 Any new features have to pay their weight in new user learning tax.
 
-For similar reasons we try to chart a neutral path among language influences. 
+For similar reasons we try to chart a **neutral** path among **language influences**. 
 We can't count on our programmers to be familiar with Rust or TypeScript or C++ or Ocaml or Scala.
 -->
 
@@ -291,15 +288,9 @@ Reflection
 <br/>
 
 <!--
-There are a number of language features under way. Some perhaps not all are coming this year.
+There are **more language features** under way. 
 
-Wildcards, visibility.
-
-More attention on the shader/host interface in general.
-
-Parameterized modules -> injected constants as conditions
-
-Medium term, Reflection and Generics should enable a richer class of apps and libraries
+Medium term, **Reflection and Generics** should enable a richer class of apps and libraries
 -->
 
 ---
@@ -1396,16 +1387,12 @@ generics / typeclasses / context classes
 reflection
 </div>
 
+<!--
+We'd love your **advice**
 
-<!-- 
-We'd love your advice on tools and shader languages.
+We'd also love to hear of **problems** using WebGPU. If you know people using WebGPU, have them tell us their pain points.
 
-If you know people using WebGPU, have them tell us their pain points.
 Maybe we can address some things with tools or language extensions.
-
-Advice on many topics in shader language is welcome too,
-we're getting tempted to dip into deeper design waters.
-
 -->
 
 ---
