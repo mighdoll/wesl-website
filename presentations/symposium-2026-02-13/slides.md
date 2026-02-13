@@ -10,6 +10,10 @@ drawings:
 transition: none
 ---
 
+<img src="/khronos-title.png" class="absolute inset-0 w-full h-full object-contain" />
+
+---
+
 <!--
 TODO:
 - extra slides for upcoming wgsl features 
@@ -327,7 +331,7 @@ flowchart LR
 <!--
 Of course, there are limits to what we can do with WESL.
 
-We a shader front end.
+We are a shader front end.
 
 We can rewrite shader source code,
 
@@ -343,7 +347,7 @@ layout: center
 # Tools
 
 <!--
-Now let's start talking the tools that are perhaps the main driver of shader language extensions
+Now let's start talking the tools that are a main driver of shader language extensions
 -->
 
 ---
@@ -381,7 +385,8 @@ flowchart LR
 <!--
 We built linking and packaging tools first.
 
-And there's some fresh new tools that are coming out now.
+And there's some new tools that are **freshly available**
+or will be available in the next few weeks.
 -->
 
 ---
@@ -446,13 +451,7 @@ wgsl-studio - IDE test runner
 </div>
 
 <!--
-These are some of the needs we hear about from the community. 
-
-Testing support
-
-Online documentation
-
-Editor support
+An overview of the tools we're going to talk about.
 -->
 
 ---
@@ -806,19 +805,17 @@ VS Code extension for running tests, previewing images
 <!--
 testing is obviously important for developers
 
-also seems likely to be especially important in the AI coding era
+also seems likely to be especially important in the **AI era**
 
-tests help keep our agents on track
+tests help keep our **agents on track**
  
-Goal: integrate with developer workflows, 
-- continuous integration friendly testing 
-- integrate w/ existing test frameworks where appropriate
-- VSCode
+Goal: integrate with **developer workflows**, 
+- **continuous integration** friendly testing 
+- integrate w/ **existing test frameworks** where appropriate
+- **VSCode**
 
 We now have some fresh new ways to do:
-
 - Unit testing
-
 - image snapshot testing
 
 on WebGPU
@@ -855,12 +852,12 @@ Tests run in Node (Dawn) or Deno (wgpu)
 </div>
 
 <!--
-wgsl-test: headless unit and visual regression tests from the cli
+wgsl-test: **headless** unit and visual regression tests from the **cli**
 
-We want to write unit tests in shader code
+Users write unit tests in shader code
 - that's how shader functions are meant to be called
 
-Can also put validation [expect functions] in shader code
+Users can also put **validation** [expect functions] in shader code
 (Next slide shows an alternate approach)
 
 Where feasible, it's nice to **declare** 
@@ -895,10 +892,11 @@ Return a result and validate in any test library
 Handy for complicated validation / setup
 
 <!--
-here's a simple example of running the same kind of test and returning the result back to
+here's a simple example of running a unit test 
+but this time **returning** the result back to
 to run validation in TypeScript.
 
-you can imagine for complicated *statistical* tests or something, you might prefer to write the validation in host code.
+you can imagine for complicated **statistical** tests, you might prefer to write the validation in host code.
 -->
 
 ---
@@ -914,8 +912,6 @@ runs in CI, no browser required.
 
 It produces a nice little html report on failures.
 
-This is a test from Lygia, looking at a few of the signed distance functions.
-
 ...so that's command line tooling.
 -->
 
@@ -930,18 +926,16 @@ For **vscode** we've a new vscode extension available called **wgsl-studio**.
 
 It uses the wgsl-test core (and the Dawn webgpu engine) to support a test runner in VsCode.
 
-On the left you can see that the 'test explorer' shows both vitest tests and native tests.
+On the left you can see that the **'test explorer'** shows both vitest tests and native tests.
 
 On the right you can see errors reported along with the failing function.
 
-As an aside on design here..
+As an **aside** on design here..
 The **astute observer** might notice that the error is reported at the function, not the 'expect' call that's failing.
 
 This is an example of how tool needs can drive the design for language extensions. 
 - users want a tool to run tests in their dev environment
 - to build a better tool, we need some language affordance to report the current source line.
-
-We're setup to do that now, it's a good place to be.
 -->
 
 ---
@@ -1364,6 +1358,8 @@ projects that target WebGPU.
 
 And if you're **developing tools?**
 consider joining us in supporting these common extensions.
+
+**grow the ecosystem together**
 -->
 
 ---
