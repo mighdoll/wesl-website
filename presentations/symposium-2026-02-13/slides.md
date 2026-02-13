@@ -191,18 +191,14 @@ Shader library packaging formats
 </div>
 
 <!--
-We actually started down this because we were trying to fill some community needs for WebGPU tooling.
+We **started** this because we were trying to fill some community needs for WebGPU **tooling** and ended up **extending the shader language** itself.
 
-We started trying to write #include but better. 
-We needed the infrastructure parsing, identifer binding references to declarations, etc.
-Essentially we built the front end infrastructure of a programming language
+WESL extensions are designed to be possible **future browser implementation**.
 
-WESL extensions are designed to be possible future browser implementation.
+We maintain and test for strict upward compatibility with WGSL. Our tools run the same **compatibility test suite** as the browsers.
 
-We maintain and test for strict upward compatibility with WGSL. Our tools run the same compatibility test suite as the browsers.
-
-It makes sense to develop some language features outside the browser core.
-- it's easier to iterate: open source tools vs. multiple browsers
+It makes sense to develop some language features **outside the browser core**.
+- it's **easier to iterate**: open source tools vs. multiple browsers
 - some features may never need to go into the browser core.
 -->
 
@@ -522,7 +518,7 @@ let wgsl_str = Wesl::new("shaders")
 </div>
 
 <!--
-A peek at what linking looks like for an app.
+A peek at what **using WESL** looks like for an app.
 
 Our goal:
 
@@ -532,7 +528,7 @@ Meet developers where they are.
 
 Plugin the tools/workflow they already use.
 
-So significant effort towards making e.g. JavaScript/TypeScript bundler plugins.
+made plugins for your favorite bundlers.
 
 If you're a typescript developer using a bundler the left side should look vaguely familiar 
 
@@ -594,11 +590,11 @@ style libraries fill:#b5cbd2,stroke:#999
 </div>
 
 <!--
-Our goal is to make it easy to create shader libraries.
+the logical next step is **enabling libraries**
 
-The WebGPU community right now is full of copy-pasta
+The WebGPU community right now is full of copy-paste
 
-Packaging a shader or a collection of shaders is 
+It's easy: 
 - one cli command for npm
 - one line of code for rust
 -->
@@ -680,14 +676,9 @@ Minimize complexity for long-term compatibility
 <!--
 Zoom in on the issue of Enabling Libraries for WebGPU
 
-The tools and extensions we've built are now enough to start a library ecosystem for WebGPU.
+**Text format for stability**
 
-Considered some compressed formats, but prefer text for stability.
-
-Prefer to apply those optimizations in apps. 
-- Envision applying minification, or AST precompilation, per app, not baking into the library format.
-
-Chose to embed within existing packaging systems, not build a WebGPU specific one.
+**slot it into existing ecosystems**
 -->
 
 ---
@@ -772,10 +763,10 @@ The `wesl_pkg` macro loads the sources into Rust strings.
 The library user builds the bundle.
 
 <!--
-The rust format is similar internally to the npm one,
+The rust format is **similar** internally to the npm one,
 shaders are packaged as rust strings.
 
-Rust conventions let us construct the embedding as the developer *uses* the library.
+Rust **procedural macro** conventions let us construct the embedding as the developer uses the library.
 -->
 
 ---
@@ -964,16 +955,11 @@ We're setup to do that now, it's a good place to be.
 <img src="/wgsl_studio_preview.png" alt="vscode wgsl-studio preview shaders" class="h-100" />
 
 <!--
-Image Snapshot shaders are also viewable in wgsl-studio. 
+**previews from shaders** 
 
-here the user has right clicked 'show preview'
+like the ones that that generate **image snapshots** are also viewable in wgsl-studio. 
 
-These are rendered live with the gpu.
-
-Remember the test case from a few slides ago.
-This is the same code.
-
-You can preview shaders even if they're not tests.
+These are live rendered and update as you change the code.
 -->
 
 ---
@@ -1003,11 +989,7 @@ See shader output in real-time as you edit
 </div>
 
 <!--
-Some web components for use on web pages
-
-Editable sample code with live error checking.
-
-Web developers can embed a player.
+Some web components for using WESL/WGSL on web pages
 -->
 
 ---
@@ -1078,33 +1060,35 @@ onMounted(() => initPlayer("demo-player", drawShapesProject))
 </script>
 
 <!--
-first,
+**wgsl-play** is a convenient way to put simple shaders on a web page
 
-wgsl-play is a convenient way to put simple shaders on a web page
+note that this is the same code as the image snapshot tests
 
-note that this is the same code as the image snapshot tests,
-so regression tests can do double duty as demos.
+so regression **tests can do double duty as demos**.
 
 [press play]
 
-this is the component used inside the vscode extension too.
+this is the component used **inside the vscode extension** too.
 
-you can put the shader code inline in the html
+**couple of lines in html** to get a player
+
+you can put the shader code **inline** in the html
+
+[press pause]
 
 or keep it in a separate file.
 
-in this example we're using the wesl-plugin's ?link
+In this example we're using the **wesl-plugin's ?link** from link
 
-That automatically loads all the dependencies from draw-shapes.wesl
+one line of code to automatically assemble a dozen shader modules.
 
-It's handy to have language extension for shader module composition that's aware of libraries
+Also, interested
+in pursuing this **correspondence** between **image tests** and **demos**.
 
+**Declarative annotations** to add to make a shader runnable seem like 
+they work for tests and demos..
 
-We're intending to add declarative annotations to enable less simple shaders to run in wgsl-play
-
-Those annotations are pretty similar to annotations needed to make runnable shader tests.
-
-your thoughts on declarative test and shadertoy style interfaces are welcome!
+Interested in learning from you about ways to make declarative tests and demos.
 -->
 
 ---
@@ -1149,16 +1133,16 @@ onMounted(() => initEditor("demo-editor", mandelbrotProject))
 </script>
 
 <!--
-another web component called wgsl-edit
-for people who want to put a WebGPU shader editor on their sites
+another web component called **wgsl-edit**
+for people who want to put a WebGPU **shader editor** on their sites
 
-uses codemirror under the hood, easy to embed even on mobile
+uses **codemirror** under the hood, can to **embed on mobile**
 
-tabbed interface
+**tabbed interface**
 
 [click tabs, dbl click to rename, + to add new]
 
-and it interoperates with wgsl-play
+and it **interoperates** with wgsl-play
 -->
 
 ---
@@ -1229,7 +1213,7 @@ based on production rust-analyzer
 </div>
 
 <!--
-TBD
+language server to support **vscode and other editors**
 -->
 
 ---
@@ -1245,7 +1229,9 @@ Programming, now in color
 </div>
 
 <!--
-Programming is prettier when you have colors.
+Programming is prettier when you have **colors**.
+
+**Typechecking** hints too
 -->
 
 ---
@@ -1275,8 +1261,14 @@ Resilient parser to report multiple errors
 <img src="/lang-server-errors.png" alt="Formatted" style="max-width: 95%; max-height: 95%; object-fit: contain" />
 </div>
 
-<!-- 
+<!--
 typechecking other code still works even w/o errors
+
+when your code has an error 
+
+.. the rest of the language server continues to work
+
+notice how the second line typechecks despite the errors.
 -->
 
 ---
@@ -1334,9 +1326,9 @@ flowchart LR
 </div>
 
 <!--
-tool needs led us to make shader Extensions 
+**tool needs** led us to make **shader extensions**. 
 
-coming together as a group to share extensions enables shared tools 
+coming together as a group to **share extensions** enables **shared tools**. 
 
 Feel like we're in a nice spot right now.
 
@@ -1371,10 +1363,10 @@ source maps into library format..
 <!--
 As WebGPU grows in popularity
 
-Perhaps our tools can help for other 
+**Perhaps our tools can help** for other 
 projects that target WebGPU.
 
-And if you're developing tools
+And if you're **developing tools?**
 consider joining us in supporting these common extensions.
 -->
 
